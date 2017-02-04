@@ -60,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
                     x=1;
                 }
                 else if (menuItem.getItemId() == R.id.nav_profile) {
-                    Toast.makeText(MainActivity.this, "4", Toast.LENGTH_SHORT).show();
+                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.containerView,new MyOffersFragment()).commit();
+                    toolbar.setTitle("Profile");
                     home=false;
                     x=1;
                 }
