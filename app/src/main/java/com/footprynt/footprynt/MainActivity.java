@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if (menuItem.getItemId() == R.id.nav_profile) {
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView,new MyOffersFragment()).commit();
+                    fragmentTransaction.replace(R.id.containerView,new ProfileFragment()).commit();
                     toolbar.setTitle("Profile");
                     home=false;
                     x=1;
