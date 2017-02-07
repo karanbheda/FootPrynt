@@ -1,8 +1,5 @@
 package com.footprynt.footprynt;
 
-/**
- * Created by Lincoln on 18/05/16.
- */
 public class Category {
     private String category;
 

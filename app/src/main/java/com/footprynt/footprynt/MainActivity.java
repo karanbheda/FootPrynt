@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -74,14 +75,14 @@ public class MainActivity extends AppCompatActivity {
                 else if (menuItem.getItemId() == R.id.nav_pp)
                 {
                     Intent intent=new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("http://rentnget.co.in/"));
+                    intent.setData(Uri.parse("https://www.footprynt.in/privacyPolicy"));
                     startActivityForResult(intent,0);
                 }
                 else if (menuItem.getItemId() == R.id.nav_share)
                 {
                     Intent sendIntent = new Intent();
                     sendIntent.setAction(Intent.ACTION_SEND);
-                    sendIntent.putExtra(Intent.EXTRA_TEXT, "Hi. Sending this from FootPrynt");
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey there, footprynt is a social media market place. If you are active on social media and if you are looking for great offers on various brands, download the app now https://play.google.com/store/apps/details?id=com.ionicframework.footprynt448731");
                     sendIntent.setType("text/plain");
                     startActivity(Intent.createChooser(sendIntent, "FootPrynt"));
                 }
@@ -102,6 +103,21 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.mainmenu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_notification:
+                startActivity(new Intent(this, NotificationActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     int x=1;
 

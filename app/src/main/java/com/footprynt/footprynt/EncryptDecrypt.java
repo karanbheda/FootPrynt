@@ -13,12 +13,7 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-/**
- *Class to provide 128-bit AES Encryption made for Android
- *To use, Create an Instance of the class passing a String argument which will act as the key
- *To encrypt a String, call the encrypt function, which returns the base 64 encoded encrypted String
- *To decrypt a Base64 encoded String, call the decrypt function which will return the original String
- */
+
 public class EncryptDecrypt {
 
     private SecretKeySpec keySpec;
