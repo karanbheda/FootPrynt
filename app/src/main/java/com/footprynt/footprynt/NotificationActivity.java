@@ -6,7 +6,10 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +25,8 @@ public class NotificationActivity extends AppCompatActivity {
         // Inflate the layout for this fragment
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
-        toolbar = (Toolbar) findViewById(R.id.toolbar) ;
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_backbutton));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,12 +111,30 @@ public class NotificationActivity extends AppCompatActivity {
      */
     private void preparenotifications() {
 
-        Notification a = new Notification("X-Box offer claimed", "5th Oct");
+        Notification a = new Notification("Please review the offer claimed", "16th Dec");
         notificationList.add(a);
 
-        a = new Notification("Please review the offer claimed", "16th Dec");
+        a = new Notification("X-Box offer claimed", "5th Oct");
         notificationList.add(a);
 
         adapter.notifyDataSetChanged();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu_noti, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_refresh:
+                Toast.makeText(this, "refresh", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_clear:
+                Toast.makeText(this, "clear", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
