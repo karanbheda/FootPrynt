@@ -31,7 +31,7 @@ public class MyOffersFragment extends Fragment {
         //recyclerView.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
-        preparecategorys();
+        preparecategories();
         return rootView;
     }
     /*@Override
@@ -98,7 +98,7 @@ public class MyOffersFragment extends Fragment {
     /**
      * Adding few categorys for testing
      */
-    private void preparecategorys() {
+    private void preparecategories() {
 
         Category a = new Category("Clothing");
         categoryList.add(a);
