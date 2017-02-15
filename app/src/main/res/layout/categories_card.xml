@@ -11,31 +11,35 @@
         card_view:cardElevation="2dp"
         card_view:cardUseCompatPadding="true"
         android:foreground="?android:attr/selectableItemBackground"
+        card_view:cardCornerRadius="4dp"
+        android:background="@color/bg_screen1"
         android:layout_marginTop="2dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
             android:src="@drawable/music"
-            android:layout_marginLeft="15dp"/>
+            android:id="@+id/iv_cat"
+            android:layout_marginLeft="15dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:layout_below="@+id/iv_cat"
+            android:layout_marginTop="10dp"
             android:maxLines="1"
             android:text="Category name"
-            android:textColor="@color/black"
-            android:layout_marginLeft="50dp"
-            android:textSize="18sp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="15sp"
             android:id="@+id/tv_category"
-            android:layout_gravity="center_vertical" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:src="@drawable/ic_category_arrow"/>
+            android:background="@color/dot_dark_screen1"/>
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
 
 </LinearLayout>

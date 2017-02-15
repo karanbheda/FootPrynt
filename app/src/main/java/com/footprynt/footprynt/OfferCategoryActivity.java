@@ -1,11 +1,14 @@
 package com.footprynt.footprynt;
 
+import android.content.res.Resources;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -37,7 +40,7 @@ public class OfferCategoryActivity extends AppCompatActivity {
         adapter = new OffersAdapter(this, offersList);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);
-        //recyclerView.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(10), true));
+        //recyclerView.addItemDecoration(new GridSpacingItemDecoration(3, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
         prepareoffers();
@@ -71,4 +74,5 @@ public class OfferCategoryActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }*/
+
 }
