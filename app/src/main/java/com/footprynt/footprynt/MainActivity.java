@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
                 else if (menuItem.getItemId() == R.id.nav_myoffers) {
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView,new OffersCategoryFragment()).commit();
+                    fragmentTransaction.replace(R.id.containerView,new MyOffersFragment()).commit();
                     toolbar.setTitle("My Offers");
                     home=false;
                     x=1;

@@ -14,7 +14,7 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OfferActivity extends AppCompatActivity {
+public class OfferCategoryActivity extends AppCompatActivity {
     private String category;
     private Toolbar toolbar;
     private RecyclerView recyclerView;

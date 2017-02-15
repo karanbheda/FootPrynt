@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OffersCategoryFragment extends Fragment {
+public class MyOffersFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private CategoryAdapter adapter;
