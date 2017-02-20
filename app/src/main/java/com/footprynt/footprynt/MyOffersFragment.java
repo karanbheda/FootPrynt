@@ -103,19 +103,19 @@ public class MyOffersFragment extends Fragment {
      */
     private void preparecategories() {
 
-        Category a = new Category("Clothing",R.drawable.gift,"#000");
+        Category a = new Category("Clothing");
         categoryList.add(a);
+
         a = new Category("Footwear");
-        //a = new Category("Footwear",R.drawable.gift,"#000");
         categoryList.add(a);
+
         a = new Category("Gaming");
-        //a = new Category("Gaming",R.drawable.gift,"#000");
         categoryList.add(a);
-        a = new Category("Gaming");
-        //a = new Category("Travel",R.drawable.gift,"#000");
+
+        a = new Category("Travel");
         categoryList.add(a);
+
         a = new Category("Accessories");
-        //a = new Category("Accessories",R.drawable.gift,"#000");
         categoryList.add(a);
 
         adapter.notifyDataSetChanged();
