@@ -11,6 +11,11 @@ public class HomeFragment extends Fragment {
 
     private ViewGroup rootView;
 
+    public static HomeFragment newInstance(){
+        HomeFragment homefragment = new HomeFragment();
+        return homefragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

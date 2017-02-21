@@ -3,6 +3,7 @@ package com.footprynt.footprynt;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -24,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
     FragmentTransaction mFragmentTransaction;
     android.support.v7.widget.Toolbar toolbar;
     private boolean home=true;
+    private static final long DRAWER_DELAY = 250;
     private MenuItem noti;
+    String backStageName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,27 +46,27 @@ public class MainActivity extends AppCompatActivity {
         mFragmentTransaction.replace(R.id.containerView,new HomeFragment());
         mFragmentTransaction.addToBackStack(null);
         mFragmentTransaction.commit();
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        /*mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 mDrawerLayout.closeDrawers();
-
+                mFragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
                 if (menuItem.getItemId() == R.id.nav_home) {
-                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView,new HomeFragment()).commit();
+                    FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+                    mFragmentTransaction.replace(R.id.containerView,new HomeFragment()).commit();
                     home=true;
                 }
 
                 else if (menuItem.getItemId() == R.id.nav_myoffers) {
-                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView,new MyOffersFragment()).commit();
+                    FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+                    mFragmentTransaction.replace(R.id.containerView,new MyOffersFragment()).commit();
                     toolbar.setTitle("My Offers");
                     home=false;
                     x=1;
                 }
                 else if (menuItem.getItemId() == R.id.nav_profile) {
-                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView,new ProfileFragment()).commit();
+                    FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+                    mFragmentTransaction.replace(R.id.containerView,new ProfileFragment()).commit();
                     toolbar.setTitle("Profile");
                     home=false;
                     x=1;
@@ -89,7 +93,105 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
 
-        });
+        });*/
+        mNavigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem item) {
+                        mDrawerLayout.closeDrawers();
+                        if(!item.isChecked()) {
+                            final FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+                            mFragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
+                            switch (item.getItemId()) {
+                                case R.id.nav_home:
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            boolean isFragmentInStack = mFragmentManager.popBackStackImmediate(backStageName, 0);
+                                            if (!isFragmentInStack) {
+                                                HomeFragment fragment = HomeFragment.newInstance();
+                                                mFragmentTransaction.replace(R.id.containerView, fragment);
+                                                backStageName = fragment.getClass().getName();
+                                                mFragmentTransaction.addToBackStack(backStageName).commit();
+                                            }
+                                            home=true;
+                                        }
+                                    }, DRAWER_DELAY);
+                                    break;
+                                case R.id.nav_myoffers:
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            getSupportFragmentManager().popBackStackImmediate();
+                                            mFragmentTransaction.replace(R.id.containerView, new MyOffersFragment());
+                                            mFragmentTransaction.addToBackStack(null).commit();
+                                            toolbar.setTitle("My Offers");
+                                            home=false;
+                                            x=1;
+                                        }
+                                    }, DRAWER_DELAY);
+                                    break;
+                                case R.id.nav_profile:
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            getSupportFragmentManager().popBackStackImmediate();
+                                            mFragmentTransaction.replace(R.id.containerView, new ProfileFragment());
+                                            mFragmentTransaction.addToBackStack(null);
+                                            mFragmentTransaction.commit();
+                                            toolbar.setTitle("Profile");
+                                            home=false;
+                                            x=1;
+                                            
+                                        }
+                                    }, DRAWER_DELAY);
+                                    break;
+
+                                case R.id.nav_analysis:
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            /*getSupportFragmentManager().popBackStackImmediate();
+                                            mFragmentTransaction.replace(R.id.containerView, new CommitteeFragment());
+                                            mFragmentTransaction.addToBackStack(null);
+                                            mFragmentTransaction.commit();*/
+                                            Toast.makeText(MainActivity.this, "4", Toast.LENGTH_SHORT).show();
+                                            home=false;
+                                            x=1;
+
+                                        }
+                                    }, DRAWER_DELAY);
+                                    break;
+                                case R.id.nav_pp:
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Intent intent=new Intent(Intent.ACTION_VIEW);
+                                            intent.setData(Uri.parse("https://www.footprynt.in/privacyPolicy"));
+                                            startActivityForResult(intent,0);
+                                        }
+                                    }, DRAWER_DELAY);
+                                    break;
+
+                                case R.id.nav_share:
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Intent sendIntent = new Intent();
+                                            sendIntent.setAction(Intent.ACTION_SEND);
+                                            sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey there, footprynt is a social media market place. If you are active on social media and if you are looking for great offers on various brands, download the app now https://play.google.com/store/apps/details?id=com.ionicframework.footprynt448731");
+                                            sendIntent.setType("text/plain");
+                                            startActivity(Intent.createChooser(sendIntent, "FootPrynt"));
+                                        }
+                                    }, DRAWER_DELAY);
+                                    return true;
+
+                            }
+                        }
+                        return true;
+                    }
+                }
+        );
 
 
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
@@ -151,8 +253,8 @@ public class MainActivity extends AppCompatActivity {
             t.start();
         }
         else    {
-            FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.containerView,new HomeFragment()).commit();
+            FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+            mFragmentTransaction.replace(R.id.containerView,new HomeFragment()).commit();
             toolbar.setTitle("Home");
             home=true;
         }

@@ -31,7 +31,7 @@ public class MyOffersFragment extends Fragment {
         adapter = new CategoryAdapter(getActivity(), categoryList);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(3, dpToPx(10), true));
+        //recyclerView.addItemDecoration(new GridSpacingItemDecoration(3, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
         preparecategories();
@@ -103,19 +103,19 @@ public class MyOffersFragment extends Fragment {
      */
     private void preparecategories() {
 
-        Category a = new Category("Clothing");
+        Category a = new Category("Clothing",R.drawable.ic_music,"#357FAD");
         categoryList.add(a);
 
-        a = new Category("Footwear");
+        a = new Category("Footwear",R.drawable.ic_flight_black_24dp,"#A4CD2F");
         categoryList.add(a);
 
-        a = new Category("Gaming");
+        a = new Category("Gaming",R.drawable.ic_music,"#F5B310");
         categoryList.add(a);
 
-        a = new Category("Travel");
+        a = new Category("Travel",R.drawable.ic_music,"#EB4142");
         categoryList.add(a);
 
-        a = new Category("Accessories");
+        a = new Category("Accessories",R.drawable.ic_flight_black_24dp,"#7BC8DC");
         categoryList.add(a);
 
         adapter.notifyDataSetChanged();
