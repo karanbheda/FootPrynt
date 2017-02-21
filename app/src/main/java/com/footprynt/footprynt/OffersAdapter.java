@@ -3,6 +3,7 @@ package com.footprynt.footprynt;
 import android.animation.AnimatorInflater;
 import android.animation.StateListAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.widget.CardView;
@@ -64,6 +65,14 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.MyViewHold
         holder.type.setText(offer.getType());
         if(offer.getType().equals("Exclusive"))
             holder.type.setTextColor(Color.parseColor("#00A79D"));
+        /*holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(mContext, OfferCategoryActivity.class);
+                i.putExtra("category",category.getCategory());
+                mContext.startActivity(i);
+            }
+        });*/
     }
 
 
