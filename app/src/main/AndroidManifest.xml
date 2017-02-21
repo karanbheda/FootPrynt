@@ -24,7 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".NotificationActivity" />
-        <activity android:name=".OfferCategoryActivity"></activity>
+        <activity android:name=".OfferCategoryActivity" />
+        <activity android:name=".EverySingleOfferActivity"></activity>
     </application>
 
 </manifest>
