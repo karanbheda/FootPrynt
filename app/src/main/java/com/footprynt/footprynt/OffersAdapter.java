@@ -65,14 +65,14 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.MyViewHold
         holder.type.setText(offer.getType());
         if(offer.getType().equals("Exclusive"))
             holder.type.setTextColor(Color.parseColor("#00A79D"));
-        /*holder.card.setOnClickListener(new View.OnClickListener() {
+        holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(mContext, OfferCategoryActivity.class);
-                i.putExtra("category",category.getCategory());
+                Intent i=new Intent(mContext, OfferActivity.class);
+                //i.putExtra("category",category.getCategory());
                 mContext.startActivity(i);
             }
-        });*/
+        });
     }
 
 

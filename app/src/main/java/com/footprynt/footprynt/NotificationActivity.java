@@ -26,6 +26,7 @@ public class NotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Notifications");
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_backbutton));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
