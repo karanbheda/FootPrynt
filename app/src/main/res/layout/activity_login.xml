@@ -4,21 +4,29 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/black"
     tools:context="com.footprynt.footprynt.LoginActivity">
+<android.support.v7.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="5">
 
+</android.support.v7.widget.LinearLayoutCompat>
 
-        <!--ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@mipmap/ic_launcher"
-            android:id="@+id/logo"/-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:src="@drawable/logo"
+            android:layout_centerInParent="true"
+            android:id="@+id/logo"/>
 
     <com.facebook.login.widget.LoginButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
         android:id="@+id/login_button"/>
 
 </RelativeLayout>
