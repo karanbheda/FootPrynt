@@ -24,15 +24,25 @@
            app:civ_border_color="@color/colorPrimary"/>
 
 
-       <ImageButton
+       <!--de.hdodenhof.circleimageview.CircleImageView
+           android:id="@+id/edit"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:layout_centerInParent="true"
+           android:src="@drawable/ic_music"
+           app:civ_border_width="4dp"
+           android:layout_marginTop="150dp"
+           app:civ_border_color="@color/white"/-->
+
+       <!--ImageButton
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:foreground="@drawable/round"
            android:layout_marginTop="150dp"
-           android:layout_marginRight="80dp"
-           android:layout_alignParentRight="true"
+           android:layout_centerInParent="true"
            android:id="@+id/imgEdit"
-           android:src="@drawable/ic_menu_camera" />
+           android:src="@drawable/ic_menu_camera" /-->
 
 
        <TextView
@@ -69,7 +79,6 @@
            android:textColor="@color/colorAccent"
            android:textSize="21sp"
            android:id="@+id/tv_email"
-           android:textStyle="bold"
            />
 
        <TextView
@@ -77,7 +86,7 @@
            android:layout_height="wrap_content"
            android:layout_centerHorizontal="true"
            android:layout_marginTop="20dp"
-           android:text="E-mail"
+           android:text="Mobile"
            android:textColor="@color/black"
            android:textSize="16sp"
            android:id="@+id/tv_heading2"
@@ -89,11 +98,11 @@
            android:layout_below="@+id/tv_heading2"
            android:layout_centerHorizontal="true"
            android:layout_marginTop="5dp"
-           android:text="bhedakaran1@gmail.com"
+           android:text="9619951142"
            android:textColor="@color/colorAccent"
            android:textSize="21sp"
            android:id="@+id/tv_mobile"
-           android:textStyle="bold"
+
            />
    </RelativeLayout>
 
