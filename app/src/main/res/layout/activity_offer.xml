@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_every_single_offer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -52,52 +53,84 @@
         />
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="2dp"
                 android:background="@color/colorAccent"
                 android:layout_below="@+id/tv_offertitle"
                 android:id="@+id/view2"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp" />
-    <TextView
-        android:text="About the offer
-
-        UP TO 60% OFF + GET ADDITIONAL 20% OFF
-
-        1. This is a limited time offer valid only on the products listed on this page.
-        2. Use code DAZZLE20 on the checkout page to get additional 20% off
-        3. The offer is valid ONLY on products from selected sellers."
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_below="@+id/view2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:id="@+id/tv_about"
-        android:autoLink="web"/>
-
-            <View
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorAccent"
-                android:layout_below="@+id/tv_about"
-                android:id="@+id/view3"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/abt_card"
+                card_view:cardElevation="2dp"
+                card_view:cardUseCompatPadding="true"
+                android:layout_below="@+id/view2"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
-    <TextView
-        android:text="About the company
-www.amazon.com , also called Amazon, is an American electronic commerce and cloud computing company that was founded on July 5, 1994 by Jeff Bezos and is based in Seattle, Washington.        "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/view3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:id="@+id/tv_offer"
-        android:autoLink="web"/>
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="About the Company:"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/tv_heading1"
+                        android:textColor="@color/black"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_heading1"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:id="@+id/tv_about"/>
+                </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/abt_offer_card"
+                card_view:cardElevation="2dp"
+                card_view:cardUseCompatPadding="true"
+                android:layout_below="@+id/abt_card"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Offer Details:"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/tv_heading2"
+                        android:textColor="@color/black"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_heading2"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:id="@+id/tv_about_offer"/>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
 
             <Button
                 android:text="Redeem Now"
@@ -111,7 +144,7 @@ www.amazon.com , also called Amazon, is an American electronic commerce and clou
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginBottom="20dp"
-                android:layout_below="@+id/tv_offer"
+                android:layout_below="@+id/abt_offer_card"
                 android:id="@+id/btn_redeem"
                 />
 </RelativeLayout>

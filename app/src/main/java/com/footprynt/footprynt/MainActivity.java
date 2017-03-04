@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -40,12 +41,19 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView = (NavigationView) findViewById(R.id.nv) ;
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("FootPrynt");
-        mFragmentManager = getSupportFragmentManager();
-        mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.containerView,new HomeFragment());
-        mFragmentTransaction.addToBackStack(null);
-        mFragmentTransaction.commit();
+
+        if(savedInstanceState == null){
+            mFragmentManager = getSupportFragmentManager();
+            mFragmentTransaction = mFragmentManager.beginTransaction();
+            HomeFragment fragment = HomeFragment.newInstance();
+            mFragmentTransaction.replace(R.id.containerView, fragment).commit();
+        }
+
+        NavigationMenuView navigationMenuView = (NavigationMenuView) mNavigationView.getChildAt(0);
+        if (navigationMenuView != null) {
+            navigationMenuView.setVerticalScrollBarEnabled(false);
+        }
+        mNavigationView.getMenu().getItem(0).setChecked(true);
         /*mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -114,20 +122,8 @@ public class MainActivity extends AppCompatActivity {
                                                 backStageName = fragment.getClass().getName();
                                                 mFragmentTransaction.addToBackStack(backStageName).commit();
                                             }
+                                            toolbar.setTitle("Home");
                                             home=true;
-                                        }
-                                    }, DRAWER_DELAY);
-                                    break;
-                                case R.id.nav_myoffers:
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            getSupportFragmentManager().popBackStackImmediate();
-                                            mFragmentTransaction.replace(R.id.containerView, new MyOffersFragment());
-                                            mFragmentTransaction.addToBackStack(null).commit();
-                                            toolbar.setTitle("My Offers");
-                                            home=false;
-                                            x=1;
                                         }
                                     }, DRAWER_DELAY);
                                     break;
@@ -137,8 +133,7 @@ public class MainActivity extends AppCompatActivity {
                                         public void run() {
                                             getSupportFragmentManager().popBackStackImmediate();
                                             mFragmentTransaction.replace(R.id.containerView, new ProfileFragment());
-                                            mFragmentTransaction.addToBackStack(null);
-                                            mFragmentTransaction.commit();
+                                            mFragmentTransaction.addToBackStack(null).commit();
                                             toolbar.setTitle("Profile");
                                             home=false;
                                             x=1;
@@ -146,16 +141,30 @@ public class MainActivity extends AppCompatActivity {
                                         }
                                     }, DRAWER_DELAY);
                                     break;
+                                case R.id.nav_my_offers:
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            getSupportFragmentManager().popBackStackImmediate();
+                                            mFragmentTransaction.replace(R.id.containerView, new MyOffersFragment());
+                                            mFragmentTransaction.addToBackStack(null).commit();
+                                            toolbar.setTitle("My Offers");
+                                            home=false;
+                                            x=1;
 
+                                        }
+                                    }, DRAWER_DELAY);
+                                    break;
                                 case R.id.nav_analysis:
                                     new Handler().postDelayed(new Runnable() {
                                         @Override
                                         public void run() {
-                                            /*getSupportFragmentManager().popBackStackImmediate();
-                                            mFragmentTransaction.replace(R.id.containerView, new CommitteeFragment());
+                                            getSupportFragmentManager().popBackStackImmediate();
+                                            mFragmentTransaction.replace(R.id.containerView, new AnalysisFragment());
                                             mFragmentTransaction.addToBackStack(null);
-                                            mFragmentTransaction.commit();*/
-                                            Toast.makeText(MainActivity.this, "4", Toast.LENGTH_SHORT).show();
+                                            mFragmentTransaction.commit();
+                                            toolbar.setTitle("Analysis");
+                                            //Toast.makeText(MainActivity.this, "4", Toast.LENGTH_SHORT).show();
                                             home=false;
                                             x=1;
 
@@ -224,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
     int x=1;
 
 
-    @Override
+    /*@Override
     public void onBackPressed() {
 
             if (this.mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -257,6 +266,17 @@ public class MainActivity extends AppCompatActivity {
             mFragmentTransaction.replace(R.id.containerView,new HomeFragment()).commit();
             toolbar.setTitle("Home");
             home=true;
+        }
+    }*/
+    @Override
+    public void onBackPressed()
+    {
+        if(mDrawerLayout.isDrawerOpen(GravityCompat.START))
+            mDrawerLayout.closeDrawers();
+        else {
+            mNavigationView.getMenu().getItem(0).setChecked(true);
+            toolbar.setTitle("Home");
+            super.onBackPressed();
         }
     }
 

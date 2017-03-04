@@ -26,15 +26,32 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterAuthToken;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+
+import io.fabric.sdk.android.Fabric;
+
 public class LoginActivity extends AppCompatActivity {
+
+    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
+    private static final String TWITTER_KEY = "swTQQ22LTLJO0Y26tM884YGZF";
+    private static final String TWITTER_SECRET = "wEBRqbsj63J5S14ZynxmhbttHNqfMwMKvKjghoBdhQ3RPh8J7n";
+
     private LoginButton loginButton;
+    private TwitterLoginButton btnLoginTwitter;
     private CallbackManager callbackManager;
     private SharedPreferences sharedPreferences;
-    private Button back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        try {
+        /*try {
             PackageInfo info = this.getPackageManager().getPackageInfo(this.getPackageName(), PackageManager.GET_SIGNATURES);
             for (android.content.pm.Signature signature : info.signatures) {
                 MessageDigest md;
@@ -57,7 +74,11 @@ public class LoginActivity extends AppCompatActivity {
         }
         catch (Exception e){
             Log.e("exception", e.toString());
-        }
+        }*/
+
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+        Fabric.with(this, new Twitter(authConfig));
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         sharedPreferences=getApplicationContext().getSharedPreferences("LOG", Context.MODE_PRIVATE);
         String abc=sharedPreferences.getString("abcxyz",null);
@@ -94,7 +115,21 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
         callbackManager = CallbackManager.Factory.create();
-        loginButton = (LoginButton) findViewById(R.id.login_button);
+        loginButton = (LoginButton) findViewById(R.id.fb_login_button);
+        btnLoginTwitter = (TwitterLoginButton) findViewById(R.id.twitter_login_button);
+        Callback twitterCallback = new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            }
+
+            @Override
+            public void failure(TwitterException exception) {
+                // Do something on failure
+            }
+        };
+        btnLoginTwitter.setCallback(twitterCallback);
+
         loginButton.setReadPermissions(Arrays.asList(
                 "public_profile", "email", "user_friends"));
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -114,9 +149,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
+        btnLoginTwitter.onActivityResult(requestCode, resultCode, data);
     }
     public static boolean isLogin()
     {

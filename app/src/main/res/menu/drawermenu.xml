@@ -16,13 +16,14 @@
             android:id="@+id/nav_analysis"
             android:icon="@drawable/ic_analysis"
             android:title="Analytics" />
-        </group>
-    <group android:checkableBehavior="none"
-        android:id="@+id/ds_offer" android:enabled="true">
+
+    <!--group android:checkableBehavior="single"
+        android:id="@+id/ds_offer"-->
             <item
-                android:id="@+id/nav_myoffers"
+                android:id="@+id/nav_my_offers"
                 android:icon="@drawable/ic_offers"
                 android:title="My Offers" />
+    <!--/group-->
     </group>
     <group android:checkableBehavior="none"
         android:id="@+id/ds_faq" android:enabled="true">

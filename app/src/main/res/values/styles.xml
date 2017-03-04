@@ -21,4 +21,29 @@
         <item name="android:background">?android:attr/selectableItemBackground</item>
         <item name="android:foreground">?android:attr/selectableItemBackground</item>
     </style>
+    <style name="FBswitch">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">#3b579d</item>
+
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">#ed2d2d
+        </item>
+
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">#42221f1f
+        </item>
+    </style>
+
+    <style name="TWITTERswitch">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">#16b9ed</item>
+
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">#ed2d2d
+        </item>
+
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">#42221f1f
+        </item>
+    </style>
 </resources>
