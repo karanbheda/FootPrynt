@@ -1,5 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.footprynt.footprynt.ProfileFragment">
@@ -10,19 +11,19 @@
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
-
-       <ImageButton
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:id="@+id/profile_image"
            android:layout_width="175dp"
            android:layout_height="175dp"
-           android:id="@+id/iv_profile"
            android:layout_gravity="center"
            android:layout_marginTop="30dp"
            android:foregroundGravity="center_horizontal|center"
            android:layout_centerHorizontal="true"
-           android:src="@drawable/ic_menu_camera"
-           android:background="@drawable/round"
-           android:clickable="false"
-           />
+           android:src="@drawable/dog"
+           app:civ_border_width="1dp"
+           app:civ_border_color="@color/colorPrimary"/>
+
+
        <ImageButton
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
@@ -34,115 +35,66 @@
            android:src="@drawable/ic_menu_camera" />
 
 
-       <android.support.v7.widget.CardView
-           android:layout_width="match_parent"
+       <TextView
+           android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_marginTop="30dp"
-           android:id="@+id/cv_name"
-           android:layout_below="@+id/imgEdit">
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:orientation="horizontal"
-               android:weightSum="10">
+           android:layout_below="@+id/profile_image"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="16dp"
+           android:text="Karan Bheda"
+           android:textColor="@color/colorAccent"
+           android:textSize="21sp"
+           android:id="@+id/tv_name"
+           android:textStyle="bold"
+           />
 
-               <TextView
-                   android:layout_width="0dp"
-                   android:layout_height="match_parent"
-                   android:layout_marginLeft="10dp"
-                   android:paddingBottom="10dp"
-                   android:paddingTop="10dp"
-                   android:layout_gravity="left"
-                   android:textStyle="bold"
-                   android:layout_weight="2"
-                   android:text="Name : "/>
-               <TextView
-                   android:layout_width="0dp"
-                   android:layout_height="match_parent"
-                   android:id="@+id/fb_name"
-                   android:paddingTop="10dp"
-                   android:paddingBottom="10dp"
-                   android:layout_weight="8"
-                   android:layout_gravity="left"
-                   android:textColor="#000000"
-                   />
-           </LinearLayout>
-
-       </android.support.v7.widget.CardView>
-
-       <android.support.v7.widget.CardView
-           android:layout_width="match_parent"
+       <TextView
+           android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_marginTop="10dp"
-           android:id="@+id/cv_email"
-           android:layout_below="@+id/cv_name">
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:orientation="horizontal"
-               android:weightSum="10">
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="20dp"
+           android:text="E-mail"
+           android:textColor="@color/black"
+           android:textSize="16sp"
+           android:id="@+id/tv_heading1"
+           android:layout_below="@+id/tv_name"/>
 
-               <TextView
-                   android:layout_width="0dp"
-                   android:layout_height="match_parent"
-                   android:layout_marginLeft="10dp"
-                   android:paddingBottom="10dp"
-                   android:layout_gravity="left"
-                   android:paddingTop="10dp"
-                   android:layout_weight="2"
-                   android:textStyle="bold"
-                   android:text="Email : "/>
-               <TextView
-                   android:layout_width="0dp"
-                   android:layout_height="match_parent"
-                   android:id="@+id/fb_email"
-                   android:paddingTop="10dp"
-                   android:layout_gravity="left"
-                   android:paddingBottom="10dp"
-                   android:layout_weight="8"
-                   android:textColor="#000000"
-                   />
-           </LinearLayout>
-
-       </android.support.v7.widget.CardView>
-
-       <android.support.v7.widget.CardView
-           android:layout_width="match_parent"
+       <TextView
+           android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_marginTop="10dp"
-           android:id="@+id/cv_num"
-           android:layout_below="@+id/cv_email">
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:orientation="horizontal"
-               android:weightSum="10">
+           android:layout_below="@+id/tv_heading1"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="5dp"
+           android:text="bhedakaran1@gmail.com"
+           android:textColor="@color/colorAccent"
+           android:textSize="21sp"
+           android:id="@+id/tv_email"
+           android:textStyle="bold"
+           />
 
-               <TextView
-                   android:layout_width="0dp"
-                   android:layout_height="match_parent"
-                   android:layout_marginLeft="10dp"
-                   android:paddingBottom="10dp"
-                   android:layout_weight="2"
-                   android:layout_gravity="left"
-                   android:paddingTop="10dp"
-                   android:textStyle="bold"
-                   android:text="Mobile : "/>
-               <TextView
-                   android:layout_width="0dp"
-                   android:layout_height="match_parent"
-                   android:id="@+id/fb_mobile"
-                   android:paddingTop="10dp"
-                   android:paddingBottom="10dp"
-                   android:layout_gravity="left"
-                   android:layout_weight="8"
-                   android:textColor="#000000"
-                   />
-           </LinearLayout>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="20dp"
+           android:text="E-mail"
+           android:textColor="@color/black"
+           android:textSize="16sp"
+           android:id="@+id/tv_heading2"
+           android:layout_below="@+id/tv_email"/>
 
-       </android.support.v7.widget.CardView>
-
-
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/tv_heading2"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="5dp"
+           android:text="bhedakaran1@gmail.com"
+           android:textColor="@color/colorAccent"
+           android:textSize="21sp"
+           android:id="@+id/tv_mobile"
+           android:textStyle="bold"
+           />
    </RelativeLayout>
 
 </ScrollView>
