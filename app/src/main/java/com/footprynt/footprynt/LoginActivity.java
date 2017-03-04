@@ -120,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
         Callback twitterCallback = new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
-                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
             }
 
             @Override
@@ -135,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
             }
 
             @Override
