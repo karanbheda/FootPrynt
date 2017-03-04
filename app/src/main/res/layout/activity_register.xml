@@ -1,0 +1,171 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.footprynt.footprynt.RegisterActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:layout_width="175dp"
+                android:layout_height="175dp"
+                android:id="@+id/iv_profile"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:foregroundGravity="center_horizontal|center"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_menu_camera"
+                android:background="@drawable/round"
+                android:clickable="false"
+                />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foreground="@drawable/round"
+                android:layout_marginTop="150dp"
+                android:layout_marginRight="80dp"
+                android:layout_alignParentRight="true"
+                android:id="@+id/imgEdit"
+                android:src="@drawable/ic_menu_camera" />
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:id="@+id/cv_name"
+                android:layout_below="@+id/imgEdit">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:layout_gravity="left"
+                        android:textStyle="bold"
+                        android:layout_weight="2"
+                        android:text="Name : "/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/fb_name"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="20dp"
+                        android:layout_weight="8"
+                        android:layout_gravity="left"
+                        android:text="Ayesha Kazi"
+                        android:textColor="#000000"
+                        />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/cv_email"
+                android:layout_below="@+id/cv_name">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:paddingBottom="10dp"
+                        android:layout_gravity="left"
+                        android:paddingTop="10dp"
+                        android:layout_weight="2"
+                        android:textStyle="bold"
+                        android:text="Email : "/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/fb_email"
+                        android:paddingTop="10dp"
+                        android:layout_gravity="left"
+                        android:paddingBottom="10dp"
+                        android:text="ayeshakazi1612@gmail.com"
+                        android:layout_weight="8"
+                        android:textColor="#000000"
+                        tools:editable="false" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/cv_num"
+                android:layout_below="@+id/cv_email">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:paddingBottom="10dp"
+                        android:layout_weight="2"
+                        android:layout_gravity="left"
+                        android:paddingTop="10dp"
+                        android:textStyle="bold"
+                        android:text="Mobile : "/>
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/fb_mobile"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:layout_gravity="left"
+                        android:layout_weight="8"
+                        android:textColor="#000000"
+                         />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <Button
+                android:text="Register"
+                android:background="@drawable/mybutton"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@+id/cv_num"
+                android:id="@+id/btn_Register"
+                />
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
