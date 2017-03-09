@@ -16,139 +16,239 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:foregroundGravity="center_horizontal|center"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/dog"
+            android:elevation="10dp"
+            app:civ_border_width="5dp"
+            app:civ_border_color="#f7f7f7"
+            />
   <android.support.v7.widget.CardView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:id="@+id/home_card"
+      android:layout_marginTop="50dp"
       card_view:cardElevation="2dp"
       card_view:cardUseCompatPadding="true">
-      <LinearLayout
-          android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+      <TextView
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:weightSum="10"
-          android:padding="10dp">
-          <ImageButton
-              android:layout_width="0dp"
-              android:layout_height="wrap_content"
-              android:id="@+id/btn_cat"
-              android:layout_gravity="center"
-              android:src="@mipmap/ic_launcher"
-              android:background="@drawable/round"
-              android:layout_weight="4"
-              />
-          <RelativeLayout
-              android:layout_width="0dp"
-              android:layout_height="wrap_content"
-              android:layout_weight="6">
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Hello Karan Bheda!"
-               android:layout_marginTop="10dp"
-               android:textSize="16sp"
-               android:id="@+id/tv_username"
-               android:textColor="@color/black"/>
-           <View
-               android:layout_width="wrap_content"
-               android:layout_height="1dp"
-               android:background="@color/black"
-               android:layout_marginTop="5dp"
-               android:layout_marginRight="15dp"
-               android:layout_below="@+id/tv_username"
-               android:id="@+id/view1"
-               />
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Your Miles"
-                  android:layout_below="@+id/view1"
-                  android:layout_marginTop="10dp"
-                  android:textSize="15sp"
-                  android:id="@+id/tv_yourmiles"/>
-              <android.support.v7.widget.CardView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/card_miles"
-                  android:layout_below="@id/tv_yourmiles"
-                  android:layout_marginTop="5dp">
-                  <TextView
-                      android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:background="#f7f7f7"
-                      android:textColor="@color/colorAccent"
-                      android:text="163432"
-                      android:textSize="15sp"
+          android:layout_marginTop="70dp"
+          android:id="@+id/tv_welcome"
+          android:layout_centerHorizontal="true"
+          android:text="Hello Karan Bheda,"
+          android:textColor="@color/black"
+          android:textSize="18sp"
+          />
+            <View
+                android:layout_width="100dp"
+                android:layout_height="1dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/tv_welcome"
+                android:layout_marginTop="5dp"
+                android:background="#c1c1c1"
+                android:alpha="0.6"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_below="@id/tv_welcome"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                  <com.uguratar.countingtextview.countingTextView
                       android:id="@+id/tv_miles"
-                      android:padding="5dp"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:textIsSelectable="false"
+                      android:textSize="18sp"
+                      android:textAlignment="center"
+                      android:textColor="@color/colorAccent"
+                      android:alpha="0.6"
                       />
-              </android.support.v7.widget.CardView>
-          </RelativeLayout>
-      </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_miles"
+                        android:id="@+id/tv_your_miles"
+                        android:text="YOUR MILES"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/colorAccent"
+                        android:textAlignment="center"/>
+                </RelativeLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="50dp"
+                    android:background="#c1c1c1"
+                    android:alpha="0.6"/>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <com.uguratar.countingtextview.countingTextView
+                        android:id="@+id/tv_offers_claimed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textIsSelectable="false"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorAccent"
+                        android:alpha="0.6"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_offers_claimed"
+                        android:id="@+id/tv_your_offers_claimed"
+                        android:text="OFFERS CLAIMED"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/colorAccent"
+                        android:textAlignment="center"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
   </android.support.v7.widget.CardView>
+
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/card_offfer"
+            android:layout_height="100dp"
+            android:id="@+id/card_offer"
             android:layout_below="@+id/home_card"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             card_view:cardElevation="2dp"
             card_view:cardUseCompatPadding="true">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Offers Available:"
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="15dp"
-                android:id="@+id/tv_offers"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                android:layout_below="@+id/tv_offers"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp">
-                <android.support.v7.widget.CardView
-                    android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginRight="5dp">
+                    android:text="Offers Available:"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="3dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/tv_offer_available"/>
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/tv_offer_available"
+                    android:layout_marginTop="5dp"
+                    android:background="#c1c1c1"
+                    android:alpha="0.6"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:orientation="horizontal"
+                    android:layout_below="@id/tv_offer_available"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp">
                     <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                    <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="5"
-                        android:id="@+id/tv_excoffer"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Exclusive"
-                        android:layout_below="@+id/tv_excoffer"/>
+                        android:layout_weight="1">
+                        <com.uguratar.countingtextview.countingTextView
+                            android:id="@+id/tv_offer_exclusive"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textIsSelectable="false"
+                            android:textSize="18sp"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorAccent"
+                            android:alpha="0.6"
+                            />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_offer_exclusive"
+                            android:id="@+id/exclusive"
+                            android:text="YOUR MILES"
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="center"/>
                     </RelativeLayout>
-                </android.support.v7.widget.CardView>
-                <android.support.v7.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginRight="5dp">
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <com.uguratar.countingtextview.countingTextView
+                            android:id="@+id/tv_offer_general"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textIsSelectable="false"
+                            android:textSize="18sp"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorAccent"
+                            android:alpha="0.6"
+                            />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_offer_general"
+                            android:id="@+id/general"
+                            android:text="OFFERS CLAIMED"
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="center"/>
+                    </RelativeLayout>
+                </LinearLayout>
 
-                </android.support.v7.widget.CardView>
-
-            </LinearLayout>
             </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/card_trending"
+            android:layout_below="@+id/card_offer"
+            android:layout_marginTop="10dp"
+            card_view:cardElevation="2dp"
+            card_view:cardUseCompatPadding="true">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trending Now:"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/tv_trending"/>
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/tv_trending"
+                    android:layout_marginTop="5dp"
+                    android:background="#c1c1c1"
+                    android:alpha="0.6"/>
+            </RelativeLayout>
         </android.support.v7.widget.CardView>
     </RelativeLayout>
 

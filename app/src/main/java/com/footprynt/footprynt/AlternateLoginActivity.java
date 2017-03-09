@@ -31,7 +31,7 @@ public class AlternateLoginActivity extends AppCompatActivity {
     private static final String TWITTER_SECRET = "wEBRqbsj63J5S14ZynxmhbttHNqfMwMKvKjghoBdhQ3RPh8J7n";
 
     private TextView welcome,alternate;
-
+    private Button skip;
     private LoginButton loginButton;
     private TwitterLoginButton btnLoginTwitter;
     private CallbackManager callbackManager;
@@ -44,7 +44,14 @@ public class AlternateLoginActivity extends AppCompatActivity {
         alternate = (TextView) findViewById(R.id.tv_alternate);
         loginButton = (LoginButton) findViewById(R.id.fblogin);
         btnLoginTwitter = (TwitterLoginButton) findViewById(R.id.twtlogin);
+        skip = (Button) findViewById(R.id.btn_skip);
 
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AlternateLoginActivity.this, MainActivity.class));
+            }
+        });
         if(AccessToken.getCurrentAccessToken() == null) {
             FacebookSdk.sdkInitialize(getApplicationContext());
             loginButton.setVisibility(View.VISIBLE);

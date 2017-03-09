@@ -34,7 +34,7 @@
         android:layout_below="@+id/tv_alternate"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:visibility="gone"
+
         android:id="@+id/fblogin"/>
 
     <com.twitter.sdk.android.core.identity.TwitterLoginButton
@@ -43,7 +43,18 @@
         android:layout_below="@+id/tv_alternate"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:visibility="gone"
+
         android:id="@+id/twtlogin"/>
+
+    <Button
+        android:id="@+id/btn_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/twtlogin"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:background="@null"
+        android:text="@string/skip"
+        android:textColor="@color/colorAccent" />
 
 </RelativeLayout>
