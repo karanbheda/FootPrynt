@@ -32,7 +32,8 @@
             android:value="9cd97b08a26152afd9130f72620f24251279342c" />
 
         <activity android:name=".PostActivity" />
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".AlternateLoginActivity"></activity>
     </application>
 
 </manifest>
