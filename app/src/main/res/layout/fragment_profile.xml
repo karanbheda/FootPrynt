@@ -6,8 +6,9 @@
     tools:context="com.footprynt.footprynt.ProfileFragment">
 
     <ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
@@ -25,7 +26,7 @@
 
 
        <de.hdodenhof.circleimageview.CircleImageView
-           android:id="@+id/edit"
+           android:id="@+id/btn_change_dp"
            android:layout_width="50dp"
            android:layout_height="50dp"
            android:layout_toRightOf="@+id/profile_image"
@@ -113,6 +114,7 @@
            android:layout_below="@+id/tv_mobile"
            android:layout_marginLeft="20dp"
            android:layout_marginRight="20dp"
+           android:id="@+id/ll"
            android:weightSum="2"
            android:layout_marginTop="40dp">
            <de.hdodenhof.circleimageview.CircleImageView
@@ -128,6 +130,23 @@
                android:id="@+id/check_fb"
                android:src="@drawable/ic_deactivate_fb" />
        </LinearLayout>
+
+       <Button
+           android:text="Log Out"
+           android:background="@drawable/mybutton"
+           android:paddingLeft="40dp"
+           android:paddingRight="40dp"
+           android:textColor="@color/white"
+           android:layout_width="200dp"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="20dp"
+           android:layout_marginRight="30dp"
+           android:layout_marginLeft="30dp"
+           android:layout_centerHorizontal="true"
+           android:layout_marginBottom="20dp"
+           android:layout_below="@+id/ll"
+           android:id="@+id/btn_redeem"
+           />
 
    </RelativeLayout>
 
