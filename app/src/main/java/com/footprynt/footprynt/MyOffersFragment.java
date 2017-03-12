@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ public class MyOffersFragment extends Fragment {
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         categoryList = new ArrayList<>();
         adapter = new CategoryAdapter(getActivity(), categoryList);
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3);
+        RecyclerView.LayoutManager mLayoutManager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLayoutManager);
         //recyclerView.addItemDecoration(new GridSpacingItemDecoration(3, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -103,61 +104,77 @@ public class MyOffersFragment extends Fragment {
      */
     private void preparecategories() {
 
-        Category a = new Category("Clothing",R.drawable.ic_music,"#357FAD");
+        Category a = new Category("Journalism",R.drawable.ic_education);
         categoryList.add(a);
 
-        a = new Category("Footwear",R.drawable.ic_flight_black_24dp,"#A4CD2F");
+        a = new Category("Movies",R.drawable.ic_movies);
         categoryList.add(a);
 
-        a = new Category("Gaming",R.drawable.ic_music,"#F5B310");
+        a = new Category("Restaurants",R.drawable.ic_hotel);
         categoryList.add(a);
 
-        a = new Category("Travel",R.drawable.ic_music,"#EB4142");
+        a = new Category("Breweries",R.drawable.ic_pub);
         categoryList.add(a);
 
-        a = new Category("Accessories",R.drawable.ic_flight_black_24dp,"#7BC8DC");
+        a = new Category("Electronics",R.drawable.ic_ecommerce);
+        categoryList.add(a);
+
+        a = new Category("Real Estate",R.drawable.ic_hotel);
+        categoryList.add(a);
+
+        a = new Category("Books",R.drawable.ic_education);
+        categoryList.add(a);
+
+        a = new Category("Sports",R.drawable.ic_sports);
+        categoryList.add(a);
+
+        a = new Category("Humour",R.drawable.ic_music);
+        categoryList.add(a);
+
+        a = new Category("Hotels",R.drawable.ic_hotel);
+        categoryList.add(a);
+
+        a = new Category("Automobiles",R.drawable.ic_automobile);
+        categoryList.add(a);
+
+        a = new Category("Health",R.drawable.ic_health);
+        categoryList.add(a);
+
+        a = new Category("Travel",R.drawable.ic_travel);
+        categoryList.add(a);
+
+        a = new Category("FMCG",R.drawable.ic_music);
+        categoryList.add(a);
+
+        a = new Category("Banks",R.drawable.ic_bank);
+        categoryList.add(a);
+
+        a = new Category("Personal Care",R.drawable.ic_health);
+        categoryList.add(a);
+
+        a = new Category("Shares",R.drawable.ic_music);
+        categoryList.add(a);
+
+        a = new Category("Consumer Durables",R.drawable.ic_sports);
+        categoryList.add(a);
+
+        a = new Category("E-Commerce",R.drawable.ic_ecommerce);
+        categoryList.add(a);
+
+        a = new Category("Education",R.drawable.ic_education);
+        categoryList.add(a);
+
+        a = new Category("Retail",R.drawable.ic_sports);
+        categoryList.add(a);
+
+        a = new Category("Fashion",R.drawable.ic_travel);
+        categoryList.add(a);
+
+        a = new Category("TV",R.drawable.ic_tv);
         categoryList.add(a);
 
         adapter.notifyDataSetChanged();
     }
-    public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
 
-        private int spanCount;
-        private int spacing;
-        private boolean includeEdge;
-
-        public GridSpacingItemDecoration(int spanCount, int spacing, boolean includeEdge) {
-            this.spanCount = spanCount;
-            this.spacing = spacing;
-            this.includeEdge = includeEdge;
-        }
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            int position = parent.getChildAdapterPosition(view); // item position
-            int column = position % spanCount; // item column
-
-            if (includeEdge) {
-                outRect.left = spacing - column * spacing / spanCount; // spacing - column * ((1f / spanCount) * spacing)
-                outRect.right = (column + 1) * spacing / spanCount; // (column + 1) * ((1f / spanCount) * spacing)
-
-                if (position < spanCount) { // top edge
-                    outRect.top = spacing;
-                }
-                outRect.bottom = spacing; // item bottom
-            } else {
-                outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
-                outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
-                if (position >= spanCount) {
-                    outRect.top = spacing; // item top
-                }
-            }
-        }
-    }
-
-    public int dpToPx(int dp) {
-        Resources r = getResources();
-        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
-    }
 }
 

@@ -18,8 +18,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
             android:id="@+id/iv_cat"
-            android:adjustViewBounds="true"
-            android:transitionName="poster"
             android:src="@drawable/ic_music" />
 
         <LinearLayout

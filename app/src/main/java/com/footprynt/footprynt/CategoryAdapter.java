@@ -17,12 +17,15 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Random;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyViewHolder> {
 
     private Context mContext;
     private List<Category> categoryList;
+    private String[] mDataSet;
     private static final float SHADE_FACTOR = 0.9f;
+    private Random mRandom = new Random();
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView categories;
@@ -68,10 +71,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final Category category = categoryList.get(position);
         holder.categories.setText(category.getCategory());
-        int color = Color.parseColor(category.getColor());
+        int color = getRandomHSVColor();
         holder.background1.setBackgroundColor(getDarkerShade(color));
         holder.background2.setBackgroundColor(color);
-        //Picasso.with(mContext).load(category.getImage()).resize(400, 400).centerCrop().into(holder.thumbnail);
+        holder.thumbnail.getLayoutParams().height = getRandomIntInRange(400,200);
+        Picasso.with(mContext).load(category.getImage()).into(holder.thumbnail);
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,5 +96,34 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
     @Override
     public int getItemCount() {
         return categoryList.size();
+    }
+
+    protected int getRandomIntInRange(int max, int min){
+        return mRandom.nextInt((max-min))+min;
+    }
+
+    protected int getRandomHSVColor(){
+        // Generate a random hue value between 0 to 360
+        int r = mRandom.nextInt(256);
+        int g = mRandom.nextInt(256);
+        int b = mRandom.nextInt(256);
+
+        while((r==255 && b==255 && g==255)|| (r==0 && g==0 && b==0))
+        {
+            r = mRandom.nextInt(256);
+            g = mRandom.nextInt(256);
+            b = mRandom.nextInt(256);
+        }
+        int hue = mRandom.nextInt(361);
+        // We make the color depth full
+        float saturation = 1.0f;
+        // We make a full bright color
+        float value = 1.0f;
+        // We avoid color transparency
+        int alpha = 255;
+        // Finally, generate the color
+        int color = Color.argb(alpha, r, g, b);
+        // Return the color
+        return color;
     }
 }
