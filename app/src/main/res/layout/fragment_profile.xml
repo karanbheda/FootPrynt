@@ -24,16 +24,18 @@
            app:civ_border_color="@color/colorPrimary"/>
 
 
-       <!--de.hdodenhof.circleimageview.CircleImageView
+       <de.hdodenhof.circleimageview.CircleImageView
            android:id="@+id/edit"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_gravity="center"
-           android:layout_centerInParent="true"
-           android:src="@drawable/ic_music"
+           android:layout_width="50dp"
+           android:layout_height="50dp"
+           android:layout_toRightOf="@+id/profile_image"
+           android:src="@drawable/ic_action_edit"
+           android:tint="@color/black"
+           app:civ_fill_color="@color/colorPrimary"
            app:civ_border_width="4dp"
+           android:layout_marginLeft="-50dp"
            android:layout_marginTop="150dp"
-           app:civ_border_color="@color/white"/-->
+           app:civ_border_color="@color/white"/>
 
        <!--ImageButton
            android:layout_width="wrap_content"
@@ -104,6 +106,29 @@
            android:id="@+id/tv_mobile"
 
            />
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/tv_mobile"
+           android:layout_marginLeft="20dp"
+           android:layout_marginRight="20dp"
+           android:weightSum="2"
+           android:layout_marginTop="40dp">
+           <de.hdodenhof.circleimageview.CircleImageView
+               android:layout_width="80dp"
+               android:layout_height="80dp"
+               android:layout_weight="1"
+               android:id="@+id/check_twitter"
+               android:src="@drawable/ic_deactivate_twitter" />
+           <de.hdodenhof.circleimageview.CircleImageView
+               android:layout_width="85dp"
+               android:layout_height="85dp"
+               android:layout_weight="1"
+               android:id="@+id/check_fb"
+               android:src="@drawable/ic_deactivate_fb" />
+       </LinearLayout>
+
    </RelativeLayout>
 
 </ScrollView>

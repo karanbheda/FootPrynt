@@ -1,6 +1,7 @@
 package com.footprynt.footprynt;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,8 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.hanks.htextview.HTextView;
+import com.hanks.htextview.animatetext.HText;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
@@ -30,22 +33,33 @@ public class AlternateLoginActivity extends AppCompatActivity {
     private static final String TWITTER_KEY = "swTQQ22LTLJO0Y26tM884YGZF";
     private static final String TWITTER_SECRET = "wEBRqbsj63J5S14ZynxmhbttHNqfMwMKvKjghoBdhQ3RPh8J7n";
 
-    private TextView welcome,alternate;
+    private TextView welcome;
+    private HTextView alternate;
     private Button skip;
     private LoginButton loginButton;
     private TwitterLoginButton btnLoginTwitter;
     private CallbackManager callbackManager;
+    int mCounter = 0;
+    String[] fbtext = new String[]{"You can also connect to FootPrynt using Facebook?", "Earn more Miles by connecting to FaceBook"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alternate_login);
         welcome = (TextView) findViewById(R.id.tv_welcome);
-        alternate = (TextView) findViewById(R.id.tv_alternate);
+        alternate = (HTextView) findViewById(R.id.tv_alternate);
         loginButton = (LoginButton) findViewById(R.id.fblogin);
         btnLoginTwitter = (TwitterLoginButton) findViewById(R.id.twtlogin);
         skip = (Button) findViewById(R.id.btn_skip);
 
+        //final Handler handler = new Handler();
+        //for(mCounter=0; mCounter < fbtext.length; mCounter= (mCounter+1)%fbtext.length)
+        //handler.postDelayed(new Runnable() {
+            //@Override
+            //public void run() {
+                alternate.animateText(fbtext[mCounter]);
+            //}
+        //}, 3000);
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

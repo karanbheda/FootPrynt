@@ -14,7 +14,7 @@ import com.uguratar.countingtextview.countingTextView;
 
 public class HomeFragment extends Fragment {
     //private TextView miles;
-    private countingTextView miles,offer_claimed;
+    private countingTextView miles,offer_claimed,exclusive;
     private ViewGroup rootView;
 
     public static HomeFragment newInstance(){
@@ -28,8 +28,11 @@ public class HomeFragment extends Fragment {
         rootView = (ViewGroup) inflater.inflate(R.layout.home_layout, container, false);
         miles = (countingTextView) rootView.findViewById(R.id.tv_miles);
         offer_claimed = (countingTextView) rootView.findViewById(R.id.tv_offers_claimed);
+        exclusive = (countingTextView) rootView.findViewById(R.id.tv_exclusive);
+
         miles.animateText(0,10000000);
         offer_claimed.animateText(0,7);
+        exclusive.animateText(0,4);
         return rootView;
     }
 
