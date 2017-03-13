@@ -14,8 +14,8 @@
        android:layout_height="wrap_content">
        <de.hdodenhof.circleimageview.CircleImageView
            android:id="@+id/profile_image"
-           android:layout_width="175dp"
-           android:layout_height="175dp"
+           android:layout_width="160dp"
+           android:layout_height="160dp"
            android:layout_gravity="center"
            android:layout_marginTop="30dp"
            android:foregroundGravity="center_horizontal|center"
@@ -35,8 +35,8 @@
            app:civ_fill_color="@color/colorPrimary"
            app:civ_border_width="4dp"
            android:layout_marginLeft="-50dp"
-           android:layout_marginTop="150dp"
-           app:civ_border_color="@color/white"/>
+           android:layout_marginTop="140dp"
+           app:civ_border_color="#fff3f3f3"/>
 
        <!--ImageButton
            android:layout_width="wrap_content"
@@ -108,29 +108,84 @@
 
            />
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_below="@+id/tv_mobile"
-           android:layout_marginLeft="20dp"
-           android:layout_marginRight="20dp"
-           android:id="@+id/ll"
-           android:weightSum="2"
-           android:layout_marginTop="40dp">
-           <de.hdodenhof.circleimageview.CircleImageView
-               android:layout_width="80dp"
-               android:layout_height="80dp"
-               android:layout_weight="1"
-               android:id="@+id/check_twitter"
-               android:src="@drawable/ic_deactivate_twitter" />
-           <de.hdodenhof.circleimageview.CircleImageView
-               android:layout_width="85dp"
-               android:layout_height="85dp"
-               android:layout_weight="1"
-               android:id="@+id/check_fb"
-               android:src="@drawable/ic_deactivate_fb" />
-       </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_mobile"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/ll"
+            android:weightSum="2"
+            android:layout_marginTop="40dp">
+           <RelativeLayout
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1">
 
+               <RelativeLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingTop="5dp"
+                   android:paddingBottom="5dp"
+                   android:paddingLeft="10dp"
+                   android:layout_centerHorizontal="true"
+                   android:id="@+id/rr_exclusive"
+                   android:paddingRight="10dp">
+
+                   <de.hdodenhof.circleimageview.CircleImageView
+                       android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:id="@+id/check_twitter"
+                       android:src="@drawable/ic_deactivate_twitter"
+                       android:layout_centerHorizontal="true"/>
+
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/check_twitter"
+                       android:text="Disconnected"
+                       android:textAlignment="center"
+                       android:textSize="17sp"
+                       android:id="@+id/status_twitter"
+                       android:layout_marginTop="5dp"
+                       android:textColor="@color/red" />
+
+               </RelativeLayout>
+           </RelativeLayout>
+           <RelativeLayout
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1">
+
+               <RelativeLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingTop="5dp"
+                   android:paddingBottom="5dp"
+                   android:paddingLeft="10dp"
+                   android:layout_centerHorizontal="true"
+                   android:paddingRight="10dp"
+                   android:id="@+id/rr_general">
+
+                   <de.hdodenhof.circleimageview.CircleImageView
+                       android:layout_width="85dp"
+                       android:layout_height="85dp"
+                       android:layout_centerHorizontal="true"
+                       android:id="@+id/check_fb"
+                       android:src="@drawable/ic_deactivate_fb" />
+
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/check_fb"
+                       android:text="Disconnected"
+                       android:textAlignment="center"
+                       android:id="@+id/status_fb"
+                       android:textSize="17sp"
+                       android:textColor="@color/red" />
+               </RelativeLayout>
+           </RelativeLayout>
+       </LinearLayout>
        <Button
            android:text="Log Out"
            android:background="@drawable/mybutton"

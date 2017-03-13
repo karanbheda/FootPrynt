@@ -170,29 +170,31 @@
                           android:layout_width="0dp"
                           android:layout_height="wrap_content"
                           android:layout_weight="1">
-                          <android.support.v7.widget.CardView
+
+                          <RelativeLayout
                               android:layout_width="100dp"
                               android:layout_height="wrap_content"
+                              android:paddingTop="5dp"
+                              android:paddingBottom="5dp"
+                              android:paddingLeft="10dp"
                               android:layout_centerHorizontal="true"
+                              android:id="@+id/rr_exclusive"
+                              android:paddingRight="10dp"
                               android:background="@drawable/card_edge">
-                              <RelativeLayout
-                                  android:layout_width="wrap_content"
-                                  android:layout_height="wrap_content"
-                                  android:paddingTop="5dp"
-                                  android:paddingBottom="5dp"
-                                  android:paddingLeft="10dp"
-                                  android:paddingRight="10dp">
+
                               <com.uguratar.countingtextview.countingTextView
                                   android:id="@+id/tv_exclusive"
                                   android:layout_width="match_parent"
                                   android:layout_height="wrap_content"
                                   android:textIsSelectable="false"
                                   android:textSize="18sp"
-                                  android:text="55555"
                                   android:textAlignment="center"
                                   android:textColor="@color/colorAccent"
                                   android:alpha="0.6"
-                                  />
+                                  android:layout_alignParentTop="true"
+                                  android:layout_alignParentLeft="true"
+                                  android:layout_alignParentStart="true" />
+
                               <TextView
                                   android:layout_width="match_parent"
                                   android:layout_height="wrap_content"
@@ -201,35 +203,37 @@
                                   android:textAlignment="center"
                                   android:layout_marginTop="5dp"
                                   android:textColor="@color/colorAccent" />
-                              </RelativeLayout>
-                          </android.support.v7.widget.CardView>
+
+                          </RelativeLayout>
                       </RelativeLayout>
                       <RelativeLayout
                           android:layout_width="0dp"
                           android:layout_height="wrap_content"
                           android:layout_weight="1">
-                          <android.support.v7.widget.CardView
-                              android:layout_width="100dp"
-                              android:layout_height="wrap_content"
-                              android:layout_centerHorizontal="true"
-                              card_view:cardCornerRadius="5dp">
-
-                          <android.support.v7.widget.CardView
-                              android:layout_width="100dp"
-                              android:layout_height="wrap_content"
-                              android:layout_centerHorizontal="true"
-                              card_view:cardCornerRadius="5dp"
-                              app:cardBackgroundColor="@color/white"
-                              card_view:cardElevation="1dp"
-                              card_view:cardUseCompatPadding="true">
 
                               <RelativeLayout
-                                  android:layout_width="wrap_content"
+                                  android:layout_width="100dp"
                                   android:layout_height="wrap_content"
                                   android:paddingTop="5dp"
                                   android:paddingBottom="5dp"
                                   android:paddingLeft="10dp"
-                                  android:paddingRight="10dp">
+                                  android:layout_centerHorizontal="true"
+                                  android:paddingRight="10dp"
+                                  android:background="@drawable/card_edge"
+                                  android:id="@+id/rr_general">
+
+                                  <com.uguratar.countingtextview.countingTextView
+                                      android:id="@+id/tv_general"
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:textIsSelectable="false"
+                                      android:textSize="18sp"
+                                      android:textAlignment="center"
+                                      android:textColor="@color/colorAccent"
+                                      android:alpha="0.6"
+                                      android:layout_alignParentTop="true"
+                                      android:layout_alignParentLeft="true"
+                                      android:layout_alignParentStart="true" />
 
                                   <TextView
                                       android:layout_width="match_parent"
@@ -239,23 +243,7 @@
                                       android:textAlignment="center"
                                       android:layout_marginTop="5dp"
                                       android:textColor="@color/colorAccent" />
-
-                                  <com.uguratar.countingtextview.countingTextView
-                                      android:id="@+id/tv_general"
-                                      android:layout_width="match_parent"
-                                      android:layout_height="wrap_content"
-                                      android:textIsSelectable="false"
-                                      android:textSize="18sp"
-                                      android:text="55555"
-                                      android:textAlignment="center"
-                                      android:textColor="@color/colorAccent"
-                                      android:alpha="0.6"
-                                      android:layout_alignParentTop="true"
-                                      android:layout_alignParentLeft="true"
-                                      android:layout_alignParentStart="true" />
                               </RelativeLayout>
-                          </android.support.v7.widget.CardView>
-                          </android.support.v7.widget.CardView>
                       </RelativeLayout>
                   </LinearLayout>
 
