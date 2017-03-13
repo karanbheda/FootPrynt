@@ -63,8 +63,10 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.MyViewHold
         holder.offer.setText(offer.getOffer());
         holder.date.setText(offer.getDate());
         holder.type.setText(offer.getType());
-        if(offer.getType().equals("Exclusive"))
+        if(offer.getType().equals("Exclusive offer"))
             holder.type.setTextColor(Color.parseColor("#00A79D"));
+        if(offer.getType().equals("General"))
+            holder.type.setText("");
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
