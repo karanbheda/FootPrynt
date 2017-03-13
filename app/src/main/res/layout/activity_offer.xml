@@ -132,6 +132,74 @@
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/followLike"
+                card_view:cardElevation="2dp"
+                card_view:cardUseCompatPadding="true"
+                android:layout_below="@+id/abt_offer_card"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Follow/Like us for more exciting offers"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/tv_heading3"
+                        android:textColor="@color/black"
+                        />
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/tv_heading3"
+                        android:src="@drawable/fb"
+                        android:id="@+id/iv_fb"
+                        />
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_below="@+id/iv_fb"
+                        android:src="@drawable/twitter"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_heading3"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:id="@+id/tv_like"
+                        android:autoLink="web"
+                        android:text="@string/Like"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_like"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:id="@+id/tv_follow"
+                        android:autoLink="web"
+                        android:text="@string/Follow"
+                        />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
             <Button
                 android:text="Redeem Now"
                 android:background="@drawable/mybutton"
@@ -144,7 +212,7 @@
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginBottom="20dp"
-                android:layout_below="@+id/abt_offer_card"
+                android:layout_below="@+id/followLike"
                 android:id="@+id/btn_redeem"
                 />
 </RelativeLayout>

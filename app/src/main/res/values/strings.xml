@@ -21,8 +21,12 @@
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!--
+TODO: Remove or change this placeholder text <img src="fb.png"> </img><img src="twitter.png"></img></img>
+    </img> -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_my_offers_fragment">MyOffersFragment</string>
     <string name="title_activity_every_single_offer">EverySingleOfferActivity</string>
+    <string name="Like"><a href="https://www.facebook.com/AmazonIN/">https://www.facebook.com/AmazonIN/</a></string>
+    <string name="Follow"><a href="https://twitter.com/amznind">https://twitter.com/amznind"</a></string>
 </resources>

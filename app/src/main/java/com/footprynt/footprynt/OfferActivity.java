@@ -17,7 +17,7 @@ import android.widget.TextView;
 public class OfferActivity extends AppCompatActivity {
     android.support.v7.widget.Toolbar toolbar;
     private Button redeem;
-    private TextView details,offer;
+    private TextView details,offer,followLike;
     private String coupon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class OfferActivity extends AppCompatActivity {
 
         details = (TextView) findViewById(R.id.tv_about);
         offer = (TextView) findViewById(R.id.tv_about_offer);
-
+        followLike = (TextView) findViewById(R.id.tv_like);
         details.setText("Amazon.com, also called Amazon, is an American electronic commerce and cloud computing company that was founded on July 5, 1994 by Jeff Bezos and is based in Seattle, Washington. ");
         offer.setText("UP TO 60% OFF + GET ADDITIONAL 20% OFF\n" +
                 "1. This is a limited time offer valid only on the products listed on this page.\n" +
@@ -58,6 +58,10 @@ public class OfferActivity extends AppCompatActivity {
                 "2. Use code DAZZLE20 on the checkout page to get additional 20% off\n" +
                 "3. The offer is valid ONLY on products from selected sellers");
 
+        //followLike.setText(Html.fromHtml("<a href=http://www.stackoverflow.com> STACK OVERFLOW "));
+        //followLike.setMovementMethod(LinkMovementMethod.getInstance());
+        //followLike.setText("Like us"+
+        //"\n\n"+"Follow us");
         makeTextViewResizable(details, 3, "View More", true);
         makeTextViewResizable(offer, 3, "View More", true);
 
