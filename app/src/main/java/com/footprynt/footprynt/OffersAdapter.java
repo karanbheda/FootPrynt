@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -61,12 +62,18 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.MyViewHold
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         Offers offer = offersList.get(position);
         holder.offer.setText(offer.getOffer());
-        holder.date.setText(offer.getDate());
+        holder.date.setText("Valid upto: "+ offer.getDate());
         holder.type.setText(offer.getType());
-        if(offer.getType().equals("Exclusive offer"))
+        if(offer.getType().equals("EXCLUSIVE!")) {
             holder.type.setTextColor(Color.parseColor("#00A79D"));
+        }
         if(offer.getType().equals("General"))
-            holder.type.setText("");
+        {
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) holder.offer.getLayoutParams();
+            params.weight = 6.0f;
+            holder.offer.setLayoutParams(params);
+            holder.date.setLayoutParams(params);
+        }
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

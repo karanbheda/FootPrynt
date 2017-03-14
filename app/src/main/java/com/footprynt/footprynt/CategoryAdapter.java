@@ -23,9 +23,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
     private Context mContext;
     private List<Category> categoryList;
-    private String[] mDataSet;
+    private int[] colors = {R.color.cat1,R.color.cat2,R.color.cat3,R.color.cat4,R.color.cat5};
+    static int a=5;
     private static final float SHADE_FACTOR = 0.9f;
     private Random mRandom = new Random();
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView categories;
@@ -72,8 +74,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         final Category category = categoryList.get(position);
         holder.categories.setText(category.getCategory());
         int color = getRandomHSVColor();
-        holder.background1.setBackgroundColor(getDarkerShade(color));
-        holder.background2.setBackgroundColor(color);
+        holder.background1.setBackgroundColor(getDarkerShade(mContext.getResources().getColor(color)));
+        holder.background2.setBackgroundColor(mContext.getResources().getColor(color));
         holder.thumbnail.getLayoutParams().height = getRandomIntInRange(400,200);
         Picasso.with(mContext).load(category.getImage()).into(holder.thumbnail);
         holder.card.setOnClickListener(new View.OnClickListener() {
@@ -104,25 +106,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
     protected int getRandomHSVColor(){
         // Generate a random hue value between 0 to 360
-        int r = mRandom.nextInt(256);
-        int g = mRandom.nextInt(256);
-        int b = mRandom.nextInt(256);
-
-        while((r==255 && b==255 && g==255)|| (r==0 && g==0 && b==0))
-        {
-            r = mRandom.nextInt(256);
-            g = mRandom.nextInt(256);
-            b = mRandom.nextInt(256);
-        }
-        int hue = mRandom.nextInt(361);
-        // We make the color depth full
-        float saturation = 1.0f;
-        // We make a full bright color
-        float value = 1.0f;
-        // We avoid color transparency
-        int alpha = 255;
+        int r = mRandom.nextInt(5);
+        while(r==a)
+            r = mRandom.nextInt(5);
+        a = r;
         // Finally, generate the color
-        int color = Color.argb(alpha, r, g, b);
+        int color = colors[r];
         // Return the color
         return color;
     }

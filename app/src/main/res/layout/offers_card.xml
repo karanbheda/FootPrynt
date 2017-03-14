@@ -47,7 +47,7 @@
                 <TextView
                     android:id="@+id/tv_offers"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:textColor="@color/black"
                     android:ellipsize="end"
                     android:maxLines="1"
@@ -55,45 +55,25 @@
                     android:text=""
                     android:layout_weight="4"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="4">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Valid upto: "
-                        android:textSize="16sp" />
                     <TextView
                         android:id="@+id/tv_date"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:textSize="16sp"
                         android:maxLines="1"
                         android:ellipsize="end"
-                        android:text="" />
-                </LinearLayout>
+                        android:text=""
+                        android:layout_weight="4"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="4">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:textSize="15sp" />
                     <TextView
                         android:id="@+id/tv_type"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="4"
                         android:textSize="15sp"
                         android:maxLines="1"
                         android:ellipsize="end"
                         android:text="" />
-                </LinearLayout>
             </LinearLayout>
 
         </RelativeLayout>

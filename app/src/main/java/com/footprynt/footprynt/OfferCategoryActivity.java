@@ -48,7 +48,7 @@ public class OfferCategoryActivity extends AppCompatActivity {
     }
     private void prepareoffers() {
 
-        Offers a = new Offers("Rs 100 off on T-shirt", "16th Dec","Exclusive offer");
+        Offers a = new Offers("Rs 100 off on T-shirt", "16th Dec","EXCLUSIVE!");
         offersList.add(a);
 
         a = new Offers("50% off on Pizza", "5th Oct","General");
