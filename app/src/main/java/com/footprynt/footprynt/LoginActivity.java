@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -37,6 +38,8 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
+import org.w3c.dom.Text;
+
 import io.fabric.sdk.android.Fabric;
 
 public class LoginActivity extends AppCompatActivity {
@@ -49,10 +52,16 @@ public class LoginActivity extends AppCompatActivity {
     private TwitterLoginButton btnLoginTwitter;
     private CallbackManager callbackManager;
     private SharedPreferences sharedPreferences;
+    private PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        // Checking for first time launch - before calling setContentView()
+        prefManager = new PrefManager(this);
+        if (!prefManager.isFirstTimeLaunch()) {
+            launchHomeScreen();
+            finish();
+        }
         /*try {
             PackageInfo info = this.getPackageManager().getPackageInfo(this.getPackageName(), PackageManager.GET_SIGNATURES);
             for (android.content.pm.Signature signature : info.signatures) {
@@ -151,8 +160,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        ImageView logo = (ImageView) findViewById(R.id.logo);
-        logo.setOnClickListener(new View.OnClickListener() {
+        TextView backtowelcome = (TextView) findViewById(R.id.tv_welcome);
+        backtowelcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, WelcomeActivity.class));
@@ -172,5 +181,10 @@ public class LoginActivity extends AppCompatActivity {
     {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         return accessToken != null;
+    }
+
+    private void launchHomeScreen() {
+        startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+        finish();
     }
 }

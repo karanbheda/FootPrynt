@@ -39,11 +39,19 @@ public class AlternateLoginActivity extends AppCompatActivity {
     private LoginButton loginButton;
     private TwitterLoginButton btnLoginTwitter;
     private CallbackManager callbackManager;
+    private PrefManager prefManager;
     int mCounter = 0;
     String[] fbtext = new String[]{"You can also connect to FootPrynt using Facebook?", "Earn more Miles by connecting to FaceBook"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Checking for first time launch - before calling setContentView()
+        prefManager = new PrefManager(this);
+        if (!prefManager.isFirstTimeLaunch()) {
+            launchHomeScreen();
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alternate_login);
         welcome = (TextView) findViewById(R.id.tv_welcome);
@@ -63,7 +71,9 @@ public class AlternateLoginActivity extends AppCompatActivity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                prefManager.setFirstTimeLaunch(false);
                 startActivity(new Intent(AlternateLoginActivity.this, MainActivity.class));
+                finish();
             }
         });
         if(AccessToken.getCurrentAccessToken() == null) {
@@ -75,7 +85,9 @@ public class AlternateLoginActivity extends AppCompatActivity {
             loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                 @Override
                 public void onSuccess(LoginResult loginResult) {
+                    prefManager.setFirstTimeLaunch(false);
                     startActivity(new Intent(AlternateLoginActivity.this,MainActivity.class));
+                    finish();
                 }
 
                 @Override
@@ -96,7 +108,9 @@ public class AlternateLoginActivity extends AppCompatActivity {
             Callback twitterCallback = new Callback<TwitterSession>() {
                 @Override
                 public void success(Result<TwitterSession> result) {
+                    prefManager.setFirstTimeLaunch(false);
                     startActivity(new Intent(AlternateLoginActivity.this,MainActivity.class));
+                    finish();
                 }
 
                 @Override
@@ -119,6 +133,11 @@ public class AlternateLoginActivity extends AppCompatActivity {
 
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         return accessToken != null;
+    }
+
+    private void launchHomeScreen() {
+        startActivity(new Intent(AlternateLoginActivity.this, MainActivity.class));
+        finish();
     }
 }
 

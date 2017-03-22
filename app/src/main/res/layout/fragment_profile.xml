@@ -200,7 +200,7 @@
            android:layout_centerHorizontal="true"
            android:layout_marginBottom="20dp"
            android:layout_below="@+id/ll"
-           android:id="@+id/btn_redeem"
+           android:id="@+id/btn_logout"
            />
 
    </RelativeLayout>

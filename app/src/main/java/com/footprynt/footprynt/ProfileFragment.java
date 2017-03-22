@@ -1,11 +1,13 @@
 package com.footprynt.footprynt;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -17,6 +19,8 @@ public class ProfileFragment extends Fragment {
     private ViewGroup rootView;
     private CircleImageView twitter, fb,edit_dp;
     private TextView status_fb, status_twitter;
+    private PrefManager prefManager;
+    private Button logout;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              final Bundle savedInstanceState) {
@@ -28,6 +32,8 @@ public class ProfileFragment extends Fragment {
         edit_dp = (CircleImageView) rootView.findViewById(R.id.btn_change_dp);
         status_fb = (TextView) rootView.findViewById(R.id.status_fb);
         status_twitter = (TextView) rootView.findViewById(R.id.status_twitter);
+        logout = (Button) rootView.findViewById(R.id.btn_logout);
+        prefManager = new PrefManager(getContext());
 
         fb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +61,15 @@ public class ProfileFragment extends Fragment {
                 mBuilder.setView(mView);
                 AlertDialog dialog = mBuilder.create();
                 dialog.show();
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                prefManager.setFirstTimeLaunch(true);
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+                getActivity().finish();
             }
         });
         return rootView;
