@@ -13,36 +13,47 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> {
 
     private Context mContext;
     private List<Post> postList;
+    private TextView posts;
+    private CardView card;
+    private ImageView tick;
+
+    private void resetPosts(){
+        for(Post p:postList)  p.setChecked(false);
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView post;
-        public CardView card;
-        public ImageView tick;
+
+
 
         public MyViewHolder(View view) {
             super(view);
             card = (CardView) view.findViewById(R.id.post_card);
-            post = (TextView) view.findViewById(R.id.tv_post);
+            posts = (TextView) view.findViewById(R.id.tv_post);
             tick = (ImageView) view.findViewById(R.id.iv_check);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 StateListAnimator stateListAnimator = AnimatorInflater.loadStateListAnimator(mContext, R.animator.lift_on_touch);
                 card.setStateListAnimator(stateListAnimator);
             }
-            card.setOnClickListener(new View.OnClickListener() {
+            /*
+            Delete later
+            defining the onClickListener in the onBindViewHolder
+             card.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     tick.setVisibility(View.VISIBLE);
                     card.setCardBackgroundColor(Color.WHITE);
                     post.setTextColor(Color.BLACK);
+
+
                 }
             });
+            */
         }
     }
 
@@ -62,8 +73,21 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Post post = postList.get(position);
-        holder.post.setText(post.getPost());
+        final Post post = postList.get(position);
+        posts.setText(post.getPost());
+        if(post.getChecked()){
+            tick.setVisibility(View.VISIBLE);
+            card.setCardBackgroundColor(Color.WHITE);
+            posts.setTextColor(Color.BLACK);
+        }
+        card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetPosts();
+                post.toggleChecked();
+                PostAdapter.this.notifyDataSetChanged();
+            }
+        });
     }
 
 
