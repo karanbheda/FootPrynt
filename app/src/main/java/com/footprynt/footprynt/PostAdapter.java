@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +20,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
 
     private Context mContext;
     private List<Post> postList;
-    private TextView posts;
-    private CardView card;
-    private ImageView tick;
+
 
     private void resetPosts(){
         for(Post p:postList)  p.setChecked(false);
@@ -29,7 +28,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-
+        private TextView posts;
+        private CardView card;
+        private ImageView tick;
 
         public MyViewHolder(View view) {
             super(view);
@@ -74,17 +75,25 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final Post post = postList.get(position);
-        posts.setText(post.getPost());
+        holder.posts.setText(post.getPost());
         if(post.getChecked()){
-            tick.setVisibility(View.VISIBLE);
-            card.setCardBackgroundColor(Color.WHITE);
-            posts.setTextColor(Color.BLACK);
+            holder.tick.setVisibility(View.VISIBLE);
+            holder.card.setCardBackgroundColor(Color.WHITE);
+            holder.posts.setTextColor(Color.BLACK);
         }
-        card.setOnClickListener(new View.OnClickListener() {
+        /*Remember to set this later!*/
+        else{
+            holder.tick.setVisibility(View.GONE);
+            holder.card.setCardBackgroundColor(Color.parseColor("#f7f7f7"));
+            holder.posts.setTextColor(Color.GRAY);
+        }
+
+        holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean x = post.getChecked();
                 resetPosts();
-                post.toggleChecked();
+                post.setChecked(!x);
                 PostAdapter.this.notifyDataSetChanged();
             }
         });
