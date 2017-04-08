@@ -4,21 +4,30 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:layout_centerInParent="true"
     tools:context="com.footprynt.footprynt.LoginActivity">
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg7"
+        android:alpha="1"
+        android:scaleType="fitXY"    />
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true">
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
-            android:layout_centerInParent="true"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/logo"
+            android:layout_centerHorizontal="true"
             android:id="@+id/logo"/>
 
     <com.facebook.login.widget.LoginButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/logo"
         android:id="@+id/fb_login_button"/>
 
@@ -28,7 +37,7 @@
         android:layout_marginTop="20dp"
         android:layout_below="@id/fb_login_button"
         android:id="@+id/twitter_login_button"
-        android:layout_centerInParent="true"/>
+        android:layout_centerHorizontal="true"/>
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
         android:id="@+id/login_button"/>
@@ -37,10 +46,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/twitter_login_button"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:id="@+id/tv_welcome"
         android:layout_centerHorizontal="true"
         android:text="Know more about us"
         android:textColor="@color/bg_screen2" />
+
+</RelativeLayout>
+
 </RelativeLayout>
 
