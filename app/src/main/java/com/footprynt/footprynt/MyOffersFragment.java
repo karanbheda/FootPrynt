@@ -1,5 +1,6 @@
 package com.footprynt.footprynt;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -80,6 +81,10 @@ public class MyOffersFragment extends Fragment implements GoogleApiClient.Connec
     }
 
     private void displayLocation() {
+        if ( ContextCompat.checkSelfPermission( getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED )
+            ActivityCompat.requestPermissions(getActivity(),
+                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},1234);
+
         if ( ContextCompat.checkSelfPermission( getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED ) {
         mLastLocation = LocationServices.FusedLocationApi
                 .getLastLocation(mGoogleApiClient);
@@ -91,8 +96,8 @@ public class MyOffersFragment extends Fragment implements GoogleApiClient.Connec
             Toast.makeText(getContext(),latitude+","+longitude, Toast.LENGTH_SHORT).show();
 
         } }else {
-
-            Toast.makeText(getContext(),"NO PERMISSION", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            //Toast.makeText(getContext(),"NO PERMISSION", Toast.LENGTH_SHORT).show();
         }
     }
 
