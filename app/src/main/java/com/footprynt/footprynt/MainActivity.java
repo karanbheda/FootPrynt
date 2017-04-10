@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     private MenuItem noti;
     String backStageName;
 
+    // index to identify current nav menu item
+    public static int navItemIndex = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,54 +57,7 @@ public class MainActivity extends AppCompatActivity {
             navigationMenuView.setVerticalScrollBarEnabled(false);
         }
         mNavigationView.getMenu().getItem(0).setChecked(true);
-        /*mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                mDrawerLayout.closeDrawers();
-                mFragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
-                if (menuItem.getItemId() == R.id.nav_home) {
-                    FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
-                    mFragmentTransaction.replace(R.id.containerView,new HomeFragment()).commit();
-                    home=true;
-                }
 
-                else if (menuItem.getItemId() == R.id.nav_myoffers) {
-                    FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
-                    mFragmentTransaction.replace(R.id.containerView,new MyOffersFragment()).commit();
-                    toolbar.setTitle("My Offers");
-                    home=false;
-                    x=1;
-                }
-                else if (menuItem.getItemId() == R.id.nav_profile) {
-                    FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
-                    mFragmentTransaction.replace(R.id.containerView,new ProfileFragment()).commit();
-                    toolbar.setTitle("Profile");
-                    home=false;
-                    x=1;
-                }
-                else if (menuItem.getItemId() == R.id.nav_analysis) {
-                    Toast.makeText(MainActivity.this, "4", Toast.LENGTH_SHORT).show();
-                    home=false;
-                    x=1;
-                }
-                else if (menuItem.getItemId() == R.id.nav_pp)
-                {
-                    Intent intent=new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("https://www.footprynt.in/privacyPolicy"));
-                    startActivityForResult(intent,0);
-                }
-                else if (menuItem.getItemId() == R.id.nav_share)
-                {
-                    Intent sendIntent = new Intent();
-                    sendIntent.setAction(Intent.ACTION_SEND);
-                    sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey there, footprynt is a social media market place. If you are active on social media and if you are looking for great offers on various brands, download the app now https://play.google.com/store/apps/details?id=com.ionicframework.footprynt448731");
-                    sendIntent.setType("text/plain");
-                    startActivity(Intent.createChooser(sendIntent, "FootPrynt"));
-                }
-                return false;
-            }
-
-        });*/
         mNavigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -126,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                                             home=true;
                                         }
                                     }, DRAWER_DELAY);
+                                    navItemIndex = 0;
                                     break;
                                 case R.id.nav_profile:
                                     new Handler().postDelayed(new Runnable() {
@@ -140,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                                             
                                         }
                                     }, DRAWER_DELAY);
+                                    navItemIndex = 0;
                                     break;
                                 case R.id.nav_my_offers:
                                     new Handler().postDelayed(new Runnable() {
@@ -154,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
                                         }
                                     }, DRAWER_DELAY);
+                                    navItemIndex = 1;
                                     break;
                                 case R.id.nav_analysis:
                                     new Handler().postDelayed(new Runnable() {
@@ -170,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
                                         }
                                     }, DRAWER_DELAY);
+                                    navItemIndex = 0;
                                     break;
                                 case R.id.nav_pp:
                                     new Handler().postDelayed(new Runnable() {
@@ -217,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.mainmenu, menu);
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
