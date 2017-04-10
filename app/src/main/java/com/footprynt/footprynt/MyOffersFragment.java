@@ -1,14 +1,17 @@
 package com.footprynt.footprynt;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -81,9 +84,6 @@ public class MyOffersFragment extends Fragment implements GoogleApiClient.Connec
     }
 
     private void displayLocation() {
-        if ( ContextCompat.checkSelfPermission( getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED )
-            ActivityCompat.requestPermissions(getActivity(),
-                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},1234);
 
         if ( ContextCompat.checkSelfPermission( getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED ) {
         mLastLocation = LocationServices.FusedLocationApi
@@ -100,6 +100,7 @@ public class MyOffersFragment extends Fragment implements GoogleApiClient.Connec
             //Toast.makeText(getContext(),"NO PERMISSION", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     /**
      * Creating google api client object
