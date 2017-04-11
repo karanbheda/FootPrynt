@@ -37,8 +37,7 @@
 
         <activity android:name=".PostActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".AlternateLoginActivity" />
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".AlternateLoginActivity"></activity>
     </application>
 
 </manifest>
