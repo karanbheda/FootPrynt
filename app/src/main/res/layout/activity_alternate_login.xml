@@ -36,6 +36,7 @@
         android:layout_centerHorizontal="true"
         android:textColor="@color/colorAccent"
         android:layout_marginLeft="50dp"
+        android:maxLines="2"
         android:layout_marginRight="50dp"
         android:textSize="17sp"
         android:layout_below="@+id/tv_welcome"

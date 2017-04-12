@@ -43,6 +43,7 @@ public class AlternateLoginActivity extends AppCompatActivity {
     int mCounter = 0;
     String[] fbtext = new String[]{"You can also connect to FootPrynt using Facebook?", "Earn more Miles by connecting to FaceBook"};
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Checking for first time launch - before calling setContentView()
@@ -121,6 +122,11 @@ public class AlternateLoginActivity extends AppCompatActivity {
             btnLoginTwitter.setCallback(twitterCallback);
         }
 
+    }
+
+    public void onClick(View v) {
+        mCounter = mCounter >= fbtext.length - 1 ? 0 : mCounter + 1;
+        alternate.animateText(fbtext[mCounter]);
     }
 
     @Override

@@ -43,6 +43,7 @@ dependencies {
         transitive = true;
     }
     compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.hanks:htextview-base:0.1.1'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     compile 'com.android.support:design:25.2.0'
     compile 'com.android.support:recyclerview-v7:25.2.0'
