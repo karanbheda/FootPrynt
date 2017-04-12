@@ -1,5 +1,6 @@
 package com.footprynt.footprynt;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -56,23 +59,19 @@ public class OfferCategoryActivity extends AppCompatActivity {
 
         adapter.notifyDataSetChanged();
     }
-    /*@Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        getMenuInflater().inflate(R.menu.menu_noti, menu);
-        return super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.categorymenu, menu);
+        return true;
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_refresh:
-                Toast.makeText(this, "refresh", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.action_clear:
-                Toast.makeText(this, "clear", Toast.LENGTH_SHORT).show();
+            case R.id.action_search:
+                startActivity(new Intent(this, SearchActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }*/
+    }
 
 }
