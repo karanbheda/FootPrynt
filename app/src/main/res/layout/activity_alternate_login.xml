@@ -28,20 +28,16 @@
         android:id="@+id/tv_alternate"
         android:textColor="@color/colorAccent"
         android:layout_marginTop="100dp"/-->
-    <com.hanks.htextview.HTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:ellipsize="none"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/colorAccent"
-        android:layout_marginLeft="50dp"
-        android:maxLines="2"
-        android:layout_marginRight="50dp"
-        android:textSize="17sp"
-        android:layout_below="@+id/tv_welcome"
+
+    <com.hanks.htextview.scale.ScaleTextView
         android:id="@+id/tv_alternate"
-        android:layout_marginTop="100dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/tv_welcome"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"/>
 
     <com.facebook.login.widget.LoginButton
         android:layout_width="wrap_content"
@@ -71,5 +67,12 @@
         android:background="@null"
         android:text="@string/skip"
         android:textColor="@color/colorAccent" />
+    <android.support.v7.widget.AppCompatSeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:max="100"
+        android:progress="0"/>
 
 </RelativeLayout>

@@ -1,4 +1,5 @@
 package com.footprynt.footprynt;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.hanks.htextview.base.HTextView;
@@ -8,7 +9,7 @@ import com.hanks.htextview.base.HTextView;
  * Created by hanks on 2017/3/14.
  */
 
-public class BaseAnimationTV {
+public class BaseAnimationTV extends AppCompatActivity {
     String[] sentences = {"What is design?",
             "Design is not just",
             "what it looks like and feels like.",

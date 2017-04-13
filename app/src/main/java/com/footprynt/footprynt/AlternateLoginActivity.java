@@ -1,11 +1,14 @@
 package com.footprynt.footprynt;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.facebook.AccessToken;
@@ -15,8 +18,7 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.hanks.htextview.HTextView;
-import com.hanks.htextview.animatetext.HText;
+import com.hanks.htextview.base.HTextView;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
@@ -29,7 +31,7 @@ import java.util.Arrays;
 
 import io.fabric.sdk.android.Fabric;
 
-public class AlternateLoginActivity extends AppCompatActivity {
+public class AlternateLoginActivity extends BaseAnimationTV {
     private static final String TWITTER_KEY = "swTQQ22LTLJO0Y26tM884YGZF";
     private static final String TWITTER_SECRET = "wEBRqbsj63J5S14ZynxmhbttHNqfMwMKvKjghoBdhQ3RPh8J7n";
 
@@ -40,6 +42,7 @@ public class AlternateLoginActivity extends AppCompatActivity {
     private TwitterLoginButton btnLoginTwitter;
     private CallbackManager callbackManager;
     private PrefManager prefManager;
+    private SeekBar seekBar;
     int mCounter = 0;
     String[] fbtext = new String[]{"You can also connect to FootPrynt using Facebook?", "Earn more Miles by connecting to FaceBook"};
 
@@ -61,14 +64,35 @@ public class AlternateLoginActivity extends AppCompatActivity {
         btnLoginTwitter = (TwitterLoginButton) findViewById(R.id.twtlogin);
         skip = (Button) findViewById(R.id.btn_skip);
 
-        //final Handler handler = new Handler();
-        //for(mCounter=0; mCounter < fbtext.length; mCounter= (mCounter+1)%fbtext.length)
-        //handler.postDelayed(new Runnable() {
-            //@Override
-            //public void run() {
-                alternate.animateText(fbtext[mCounter]);
-            //}
-        //}, 3000);
+        if(android.os.Build.VERSION.SDK_INT >= 11){
+            // will update the "progress" propriety of seekbar until it reaches progress
+            ObjectAnimator animation = ObjectAnimator.ofInt(seekBar, "progress", 100);
+            animation.setDuration(500); // 0.5 second
+            animation.setInterpolator(new DecelerateInterpolator());
+            animation.start();
+        }
+        else
+            seekBar.setProgress(100);
+
+        alternate.setOnClickListener(new ClickListener());
+
+        ((SeekBar) findViewById(R.id.seekbar)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                alternate.setProgress(progress / 100f);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
