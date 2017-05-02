@@ -131,6 +131,7 @@ public class LoginActivity extends AppCompatActivity {
         Callback twitterCallback = new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
+                TwitterSession session = Twitter.getSessionManager().getActiveSession();
                 startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
             }
 

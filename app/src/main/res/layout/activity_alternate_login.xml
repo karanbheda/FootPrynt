@@ -5,6 +5,8 @@
     android:id="@+id/activity_alternate_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     tools:context="com.footprynt.footprynt.AlternateLoginActivity"
     android:background="#f7f7f7">
 <TextView
@@ -15,21 +17,10 @@
     android:layout_centerHorizontal="true"
     android:textColor="@color/colorPrimary"
     android:textStyle="bold"
-    android:textSize="20sp"
+    android:textSize="23sp"
     android:id="@+id/tv_welcome"/>
 
-    <!--TextView
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:textSize="17sp"
-        android:text="You can also connect to FootPrynt using Facebook to gain extra Miles"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/tv_welcome"
-        android:id="@+id/tv_alternate"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="100dp"/-->
-
-    <com.hanks.htextview.scale.ScaleTextView
+    <TextView
         android:id="@+id/tv_alternate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,42 +28,46 @@
         android:gravity="center_horizontal"
         android:layout_below="@id/tv_welcome"
         android:textColor="@color/colorAccent"
+        android:maxLines="4"
         android:textSize="20sp"/>
 
     <com.facebook.login.widget.LoginButton
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_below="@+id/tv_alternate"
         android:layout_centerHorizontal="true"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:textSize="18sp"
         android:layout_marginTop="100dp"
-
+        android:visibility="gone"
         android:id="@+id/fblogin"/>
 
     <com.twitter.sdk.android.core.identity.TwitterLoginButton
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_below="@+id/tv_alternate"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-
+        android:visibility="gone"
         android:id="@+id/twtlogin"/>
 
     <Button
         android:id="@+id/btn_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/twtlogin"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:background="@null"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
         android:text="@string/skip"
+        android:textSize="16sp"
         android:textColor="@color/colorAccent" />
-    <android.support.v7.widget.AppCompatSeekBar
-        android:id="@+id/seekbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:max="100"
-        android:progress="0"/>
+
 
 </RelativeLayout>

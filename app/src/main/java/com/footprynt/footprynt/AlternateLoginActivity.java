@@ -31,12 +31,11 @@ import java.util.Arrays;
 
 import io.fabric.sdk.android.Fabric;
 
-public class AlternateLoginActivity extends BaseAnimationTV {
+public class AlternateLoginActivity extends AppCompatActivity {
     private static final String TWITTER_KEY = "swTQQ22LTLJO0Y26tM884YGZF";
     private static final String TWITTER_SECRET = "wEBRqbsj63J5S14ZynxmhbttHNqfMwMKvKjghoBdhQ3RPh8J7n";
 
-    private TextView welcome;
-    private HTextView alternate;
+    private TextView welcome,alternate;
     private Button skip;
     private LoginButton loginButton;
     private TwitterLoginButton btnLoginTwitter;
@@ -59,39 +58,10 @@ public class AlternateLoginActivity extends BaseAnimationTV {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alternate_login);
         welcome = (TextView) findViewById(R.id.tv_welcome);
-        alternate = (HTextView) findViewById(R.id.tv_alternate);
+        alternate = (TextView) findViewById(R.id.tv_alternate);
         loginButton = (LoginButton) findViewById(R.id.fblogin);
         btnLoginTwitter = (TwitterLoginButton) findViewById(R.id.twtlogin);
         skip = (Button) findViewById(R.id.btn_skip);
-
-        if(android.os.Build.VERSION.SDK_INT >= 11){
-            // will update the "progress" propriety of seekbar until it reaches progress
-            ObjectAnimator animation = ObjectAnimator.ofInt(seekBar, "progress", 100);
-            animation.setDuration(500); // 0.5 second
-            animation.setInterpolator(new DecelerateInterpolator());
-            animation.start();
-        }
-        else
-            seekBar.setProgress(100);
-
-        alternate.setOnClickListener(new ClickListener());
-
-        ((SeekBar) findViewById(R.id.seekbar)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                alternate.setProgress(progress / 100f);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
 
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,9 +71,11 @@ public class AlternateLoginActivity extends BaseAnimationTV {
                 finish();
             }
         });
+        TwitterSession twitterSession = Twitter.getSessionManager().getActiveSession();
         if(AccessToken.getCurrentAccessToken() == null) {
             FacebookSdk.sdkInitialize(getApplicationContext());
             loginButton.setVisibility(View.VISIBLE);
+            alternate.setText("You can now connect to FootPrynt via Facebook. Connect to FaceBook and earn more miles!");
             callbackManager = CallbackManager.Factory.create();
             loginButton.setReadPermissions(Arrays.asList(
                     "public_profile", "email", "user_friends"));
@@ -126,10 +98,11 @@ public class AlternateLoginActivity extends BaseAnimationTV {
                 }
             });
         }
-        else{
+        else if(twitterSession == null){
             TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
             Fabric.with(this, new Twitter(authConfig));
             btnLoginTwitter.setVisibility(View.VISIBLE);
+            alternate.setText("You can now connect to FootPrynt via Twitter. Connect to Twitter and earn more miles!");
             Callback twitterCallback = new Callback<TwitterSession>() {
                 @Override
                 public void success(Result<TwitterSession> result) {
@@ -148,10 +121,6 @@ public class AlternateLoginActivity extends BaseAnimationTV {
 
     }
 
-    public void onClick(View v) {
-        mCounter = mCounter >= fbtext.length - 1 ? 0 : mCounter + 1;
-        alternate.animateText(fbtext[mCounter]);
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

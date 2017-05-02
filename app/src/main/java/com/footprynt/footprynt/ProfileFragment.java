@@ -10,6 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterSession;
+
 import org.w3c.dom.Text;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -35,24 +39,34 @@ public class ProfileFragment extends Fragment {
         logout = (Button) rootView.findViewById(R.id.btn_logout);
         prefManager = new PrefManager(getContext());
 
-        fb.setOnClickListener(new View.OnClickListener() {
+        /*fb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fb.setImageDrawable(getResources().getDrawable(R.drawable.ic_active_fb));
                 status_fb.setText("Connected");
                 status_fb.setTextColor(getResources().getColor(R.color.green));
             }
-        });
+        });*/
 
-        twitter.setOnClickListener(new View.OnClickListener() {
+        /*twitter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 twitter.setImageDrawable(getResources().getDrawable(R.drawable.ic_active_twitter));
                 status_twitter.setText("Connected");
                 status_twitter.setTextColor(getResources().getColor(R.color.green));
             }
-        });
-
+        });*/
+        TwitterSession twitterSession = Twitter.getSessionManager().getActiveSession();
+        if(AccessToken.getCurrentAccessToken() != null){
+            fb.setImageDrawable(getResources().getDrawable(R.drawable.ic_active_fb));
+            status_fb.setText("Connected");
+            status_fb.setTextColor(getResources().getColor(R.color.green));
+        }
+        if(twitterSession != null){
+            twitter.setImageDrawable(getResources().getDrawable(R.drawable.ic_active_twitter));
+            status_twitter.setText("Connected");
+            status_twitter.setTextColor(getResources().getColor(R.color.green));
+        }
         edit_dp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
