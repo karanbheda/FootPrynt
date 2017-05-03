@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                                         }
                                     }, DRAWER_DELAY);
                                     navItemIndex = 0;
+                                    invalidateOptionsMenu();
                                     break;
                                 case R.id.nav_profile:
                                     new Handler().postDelayed(new Runnable() {
@@ -104,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                                         }
                                     }, DRAWER_DELAY);
                                     navItemIndex = 0;
+                                    invalidateOptionsMenu();
                                     break;
                                 case R.id.nav_my_offers:
                                     new Handler().postDelayed(new Runnable() {
@@ -119,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                                         }
                                     }, DRAWER_DELAY);
                                     navItemIndex = 1;
+                                    invalidateOptionsMenu();
                                     break;
                                 case R.id.nav_analysis:
                                     new Handler().postDelayed(new Runnable() {
@@ -136,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
                                         }
                                     }, DRAWER_DELAY);
                                     navItemIndex = 0;
+                                    invalidateOptionsMenu();
                                     break;
                                 case R.id.nav_pp:
                                     new Handler().postDelayed(new Runnable() {
@@ -184,12 +188,23 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.mainmenu, menu);
+        if(navItemIndex==1){
+            menu.findItem(R.id.action_search).setVisible(true);
+            menu.findItem(R.id.action_notification).setVisible(false);
+        }
+        else{
+            menu.findItem(R.id.action_search).setVisible(false);
+            menu.findItem(R.id.action_notification).setVisible(true);
+        }
         return true;
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_notification:
                 startActivity(new Intent(this, NotificationActivity.class));
+                return true;
+            case R.id.action_search:
+                startActivity(new Intent(this, SearchActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -245,6 +260,11 @@ public class MainActivity extends AppCompatActivity {
             toolbar.setTitle("Home");
             super.onBackPressed();
         }
+        if(navItemIndex==1){
+            navItemIndex = 0;
+            invalidateOptionsMenu();
+        }
+
     }
 
 }
